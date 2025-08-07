@@ -1,0 +1,488 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* font-family: Arial, sans-serif; */
+    /* font-family: "Noto Sans", sans-serif;
+     font-family: "Delius", cursive; */
+      /* font-family: "Leckerli One", cursive; */
+     /* font-family: "Audiowide", sans-serif; */
+      font-family: "Lexend", sans-serif;
+}
+
+
+.navbar {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 10px 20px;
+    color: #000000;
+}
+.logo h3 {
+    display: inline;
+    font-size: 24px;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar ul li {
+    margin: 0 15px;
+}
+
+.navbar ul li a {
+    color: black;
+    text-decoration: none;
+    margin-right: 50px;
+}
+
+.navbar button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #fff;
+    color: #333;
+    border: none;
+    cursor: pointer;
+}
+
+#signup-button{
+    background-color: #1572D3;
+    color: white;
+    border-radius: 5px;
+}
+.hero-section {
+    background-image: url('../images/Frame1.png');
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: #f2f2f2;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 60px;
+    justify-content: space-around;
+}
+.navbar {
+    position: fixed;      
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    z-index: 10;
+    color: white;
+}
+/* Hero Section */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 160px 60px 60px;
+    background-image: url('../images/background.png');
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: contain;
+    min-height: 100vh;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-content h1 {
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.hero-content .highlight {
+    color: #1572D3;
+    border-bottom: 4px solid #1572D3;
+}
+
+.hero-content p {
+    margin: 20px 0;
+    color: #555;
+    font-size: 16px;
+}
+
+.store-buttons img {
+    width: 140px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.hero-image img {
+    max-width: 700px;
+    height: auto;
+}
+/* Search Box */
+.search-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: -140px;
+  z-index: 10;
+  position: relative;
+}
+
+.search-container {
+  background: #fff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  width: 85%;
+  max-width: 1000px;
+}
+
+.search-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.search-item p {
+  color: #aaa;
+  font-size: 14px;
+}
+
+.divider {
+  height: 40px;
+  width: 1px;
+  background: #ddd;
+  margin: 0 15px;
+}
+
+.search-btn {
+  background: #0073e6;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* how-it-work */
+
+.how-it-works {
+  padding: 60px 20px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.tagline {
+  padding: 10px 20px;
+  border-radius: 8px;
+  background-color: #e6f0ff;
+  color: #007BFF;
+  font-weight: bold;
+  border: none;
+  cursor: default;
+
+
+}
+
+.section-title {
+  font-size: 2rem;
+  margin: 20px 0 40px;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+}
+
+.steps {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 60px;
+}
+
+.step {
+  max-width: 240px;
+}
+
+.icon-box {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 20px;
+  background-color: #eef4ff;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-box img {
+  width: 40px;
+  height: 40px;
+}
+
+.step h3 {
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.step p {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.brand-logo{
+  margin-top: 90px;
+  /* margin-bottom: 150px; */
+}
+
+.why-choose-us {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  /* background: #f8f9fb; */
+  /* padding: 60px 20px; */
+}
+
+.car-image {
+  flex: 1 1 40%;
+  position: relative;
+  z-index: 2;
+}
+
+.car-image img {
+  width: 100%;
+  max-width: 550px;
+  position: relative;
+  z-index: 2;
+}
+
+.background-shape {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #eaf1fb;
+  clip-path: polygon(0 60%, 50% 0, 100% 60%, 100% 100%, 0 100%);
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.content {
+  flex: 1 1 50%;
+  padding-left: 40px;
+}
+
+.tagline {
+  background: #eaf1fb;
+  color: #3563e9;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.content h2 {
+  font-size: 32px;
+  color: #1c1c1c;
+  margin-bottom: 30px;
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.feature img {
+  width: 40px;
+  height: 40px;
+}
+
+.feature h4 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.feature p {
+  margin: 5px 0 0;
+  font-size: 14px;
+  color: #555;
+}
+
+ .section-title {
+      text-align: center;
+      padding: 40px 20px 10px;
+      font-size: 2em;
+    }
+
+    .deal-badge {
+      text-align: center;
+      background: #dbeafe;
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      color: #1e3a8a;
+      margin: auto;
+      margin-bottom: 15px;
+    }
+
+    .card-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .car-card {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      width: 260px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .car-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .car-card img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 15px;
+    }
+
+    .car-name {
+      font-weight: bold;
+      margin: 10px 0 5px;
+    }
+
+    .rating {
+      color: #f59e0b;
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+
+    .features {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .rent-btn {
+      background-color: #2563eb;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .rent-btn:hover {
+      background-color: #1d4ed8;
+    }
+
+    .show-btn {
+      display: block;
+      margin: 30px auto;
+      padding: 10px 25px;
+      background-color: #f3f4f6;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* Footer Styling */
+    footer {
+      background-color: #0f172a;
+      color: #e2e8f0;
+      padding: 50px 30px 20px;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .footer-col {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .footer-logo {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+    }
+
+    .footer-col a {
+      color: #e2e8f0;
+      text-decoration: none;
+    }
+
+    .footer-col a:hover {
+      text-decoration: underline;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .social-icons a {
+      color: #e2e8f0;
+      font-size: 1.2rem;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.85rem;
+      border-top: 1px solid #334155;
+      padding-top: 15px;
+    }
