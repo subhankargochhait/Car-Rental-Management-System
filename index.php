@@ -13,7 +13,32 @@
 </head>
 <body>
 
-<?php include('includes/navbar.php'); ?>
+ <!-- nav-bar-start -->
+    <div class="contaner">
+        <nav class="navbar">
+       <div class="logo">
+  <img src="assets/images/Frame.png" alt="Logo" />
+  <h3 style="color: #1572D3;">RENTCARS</h3>
+</div>
+       <div>
+         <ul>
+            <li><a href="../index.php" class="active">Home</a></li>
+            <li><a href="/Travarsa_Internship/Car-Rental-Management-System/pages/about.php" class="active">About Us</a></li>
+            <li><a href="/Travarsa_Internship/Car-Rental-Management-System/pages/services.php" class="active">Services</a></li>
+            <li><a href="/Travarsa_Internship/Car-Rental-Management-System/pages/contact_us.php" class="active">Contact Us</a></li>
+        </ul>
+       </div>
+
+       <div class="nav-log">
+           <button type="submit" name="login"><a href="/Travarsa_Internship/Car-Rental-Management-System/pages/login.php" class="active" style="color: black;">Login</a></button>
+
+            <button id="signup-button"><a href="/Travarsa_Internship/Car-Rental-Management-System/pages/signup.php" class="active" style="color: white;">Sign Up</a></button>
+
+               <button id="signup-button"><a href="/Travarsa_Internship/Car-Rental-Management-System/pages/admin.php" class="active" style="color: white;">Admin/Login</a></button>
+        </div>
+
+    </nav>
+    <!-- nav-bar-end -->
 
      <!-- hero-section-start -->
     <section class="hero hero-section">

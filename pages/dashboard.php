@@ -23,6 +23,28 @@ if (!isset($_SESSION["un"])) {
         body{
             background-color: white;
         }
+        .main-content{
+            margin-left: 60px;
+            margin-bottom: 250px;
+            margin-top: 20px;
+        }
+        .section-1{
+            display: flex;
+            height: 40px;
+            width: 400px;
+            margin-top: 20px;
+            background-color: rgb(12, 128, 217);
+            background: linear-gradient(to bottom, #ff7e5f, #feb47b);
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            border-radius: 20px;
+            text-decoration: none;
+            color: black;
+
+        }
     </style>
   <!-- nav-bar-start -->
     <div class="contaner">
@@ -31,6 +53,7 @@ if (!isset($_SESSION["un"])) {
   <img src="../assets/images/Frame.png" alt="Logo" />
   <h3 style="color: #1572D3;">RENTCARS</h3>
 </div>
+
        <div>
          <ul>
             <li><a href="../index.php" class="active">My Dashboard</a></li>
@@ -38,20 +61,39 @@ if (!isset($_SESSION["un"])) {
             <li><a href="/Travarsa_Internship/Car-Rental-Management-System/pages/services.php" class="active">Book Rental</a></li>
             <li><a href="/Travarsa_Internship/Car-Rental-Management-System/pages/contact_us.php" class="active">My Rental</a></li>
              <li><a href="/Travarsa_Internship/Car-Rental-Management-System/pages/contact_us.php" class="active">Profile</a></li>
+             <p style="color: red;">Welcome, <?php echo htmlspecialchars($_SESSION["un"]); ?></p>
         </ul>
        </div>
 
        <div class="nav-log">
-        <p>Welcome, <?php echo htmlspecialchars($_SESSION["un"]); ?></p>
+        
             <button id="signup-button"><a href="logout.php" class="active" style="color: white;">Logout</a></button>
 
         </div>
 
     </nav>
     <!-- nav-bar-end -->
-    <h1>
-        Welcome to my CAR RENTAL MANAGEMENT SYSTEM PROJECT <br>
-        YOUR NAME :: <?php echo htmlspecialchars($_SESSION["un"]); ?>
-    </h1>
+
+    <!-- Hero Section Start -->
+    
+     <div class="main-content">
+         <h1>Welcome to your Dashboard</h1>
+        <div class="section-1">
+            <p><a href="#">🚗 Browser Avilable Cars</a></p>
+        </div>
+
+        <div class="section-1" style="background: linear-gradient(to right, #6a11cb, #2575fc);">
+            <p><a href="#">✅ Make New Booking</a></p>
+        </div>
+
+        <div class="section-1" style=" background: radial-gradient(circle, #ff512f, #dd2476);">
+            <p><a href="#">📋 View My Rentals</a></p>
+        </div>
+
+     </div>
+    <!-- Hero Section End -->
+
+          <!-- Footer-section-start -->
+<?php include('../includes/footer.php'); ?>
 </body>
 </html>
