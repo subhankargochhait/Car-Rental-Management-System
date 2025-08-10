@@ -21,6 +21,7 @@ body {
     align-items: center;
     padding: 10px 20px;
     color: #000000;
+    background-color: white;
 }
 .logo h3 {
     display: inline;
@@ -56,6 +57,11 @@ body {
     color: white;
     border-radius: 5px;
 }
+#admin-button{
+    background-color: #1572D3;
+    color: white;
+    border-radius: 5px;
+}
 .hero-section {
     background-image: url('../images/Frame1.png');
     background-position: right center;
@@ -70,7 +76,7 @@ body {
     justify-content: space-around;
 }
 .navbar {
-    position: fixed;      
+    /* position: fixed;       */
     top: 0;
     left: 0;
     width: 100%;
@@ -79,10 +85,13 @@ body {
     align-items: center;
     padding: 20px 50px;
     z-index: 10;
-    color: white;
+    color: #555;
 }
+
+
+
 /* Hero Section */
-.hero {
+/* .hero {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -92,7 +101,10 @@ body {
     background-repeat: no-repeat;
     background-size: contain;
     min-height: 100vh;
-}
+} */
+ .nav-log,a{
+  text-decoration: none;
+ }
 
 .hero-content {
     max-width: 600px;
@@ -486,3 +498,61 @@ body {
       border-top: 1px solid #334155;
       padding-top: 15px;
     }
+
+
+
+
+
+    /* SERVICES START */
+        body {
+      background-color: #f7f9fc;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .filter-box {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .switch-btn {
+      background-color: #2962ff;
+      color: white;
+      border-radius: 12px;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      border: none;
+    }
+
+    .form-label {
+      font-weight: 600;
+    }
+
+    .form-select,
+    .form-control {
+      font-size: 14px;
+    }
+
+    .radio-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .filter-col {
+      border-right: 1px solid #eee;
+    }
+
+    .filter-col:last-child {
+      border-right: none;
+    }
+
+
+    /* SERVICES END */
+
+

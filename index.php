@@ -12,30 +12,8 @@
     
 </head>
 <body>
-    <!-- nav-bar-start -->
-    <div class="contaner">
-        <nav class="navbar">
-       <div class="logo">
-  <img src="assets/images/Frame.png" alt="Logo" />
-  <h3 style="color: #1572D3;">RENTCARS</h3>
-</div>
-       <div>
-         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact Us</a></li>
-        </ul>
-       </div>
 
-       <div>
-            <button>Login</button>
-            <button id="signup-button">Sign Up</button>
-        </div>
-
-       <
-    </nav>
-    <!-- nav-bar-end -->
+<?php include('includes/navbar.php'); ?>
 
      <!-- hero-section-start -->
     <section class="hero hero-section">
@@ -212,62 +190,9 @@
   <!-- Most-populer-section-end -->
 
 <!-- Footer-section-start -->
-  <footer>
-    <div class="footer-container">
-      <div class="footer-col">
-        <div class="footer-logo">🚗 RENTCARS</div>
-        <ul>
-          <li>📍 Travarsa, Kolkata, Akankha, INDIA</li>
-          <li>📞 +91 85091*****</li>
-          <li>✉️ example@gmail.com</li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Our Product</h4>
-        <ul>
-          <li><a href="#">Career</a></li>
-          <li><a href="#">Car</a></li>
-          <li><a href="#">Packages</a></li>
-          <li><a href="#">Features</a></li>
-          <li><a href="#">Priceline</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Resources</h4>
-        <ul>
-          <li><a href="#">Download</a></li>
-          <li><a href="#">Help Centre</a></li>
-          <li><a href="#">Guides</a></li>
-          <li><a href="#">Partner Network</a></li>
-          <li><a href="#">Cruises</a></li>
-          <li><a href="#">Developer</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>About Rentcars</h4>
-        <ul>
-          <li><a href="#">Why choose us</a></li>
-          <li><a href="#">Our Story</a></li>
-          <li><a href="#">Investor Relations</a></li>
-          <li><a href="#">Press Center</a></li>
-          <li><a href="#">Advertise</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Follow Us</h4>
-        <div class="social-icons">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-youtube"></i></a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      Copyright 2025 • All Rights Reserved <br>
-      This website is made by Subhankar Guchhait ❤️
-    </div>
-  </footer>
-  <!-- footer-section-end -->
+<?php include('includes/footer.php'); ?>
+
+
 
 </body>
 </html>
