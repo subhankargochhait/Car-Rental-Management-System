@@ -15,6 +15,10 @@ $rs=$con->query($sel);
 if($rs->num_rows>0){
   $row=$rs->fetch_assoc();
   $_SESSION["un"]=$row["full_name"];
+  $_SESSION["em"]=$row["email"];
+  $_SESSION["ph"]=$row["phone"];
+  $_SESSION["dl"]=$row["driver_license"];
+  $_SESSION["add"]=$row["address"];
 header("Location:dashboard.php");
 exit;
 

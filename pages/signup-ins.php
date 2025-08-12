@@ -5,11 +5,13 @@ include("../config/db.php");
 
 
 // Check if all required POST fields are set
-if (isset($_POST["name"], $_POST["email"], $_POST["phone"], $_POST["password"])) {
+if (isset($_POST["name"], $_POST["email"], $_POST["phone"], $_POST["driver-l"] , $_POST["address"] , $_POST["password"])) {
 
     $n = $_POST["name"];
     $e = $_POST["email"];
     $p = $_POST["phone"];
+    $dl = $_POST["driver-l"];
+    $a = $_POST["address"];
     $pass = $_POST["password"];
 
     // SQL query (SET syntax with commas between columns)
@@ -17,6 +19,8 @@ if (isset($_POST["name"], $_POST["email"], $_POST["phone"], $_POST["password"]))
                 full_name='$n',
                 email='$e',
                 phone='$p',
+                driver_license='$dl',
+                address='$a',
                 password='$pass'";
 
     if ($con->query($ins) === TRUE) {
@@ -24,7 +28,7 @@ if (isset($_POST["name"], $_POST["email"], $_POST["phone"], $_POST["password"]))
     } else {
         echo "Error: " . $con->error;
     }
-
+    
     $con->close();
 
 } else {

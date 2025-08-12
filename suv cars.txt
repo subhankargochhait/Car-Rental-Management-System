@@ -1,0 +1,31 @@
+SUV CARS
+
+1. Defender
+2. Mahindra Scorpio
+3. Hyundai Creta
+4. Mahindra Thar ROXX
+5. Mahindra XUV700
+6. Tata Nexon
+7. Tata Harrier
+8. Maruti FRONX
+
+COMPACT CARS
+
+1. Maruti Swift
+2. Maruti Baleno
+3. Tata Tiago
+4. Maruti Wagon R
+5. Tata Altroz
+6. Hyundai i20
+7. Maruti Alto K10
+8. Toyota Glanza
+
+Mid-size
+1. Maruti Suzuki Dzire
+2. Honda Amaze
+3. Hyundai Aura
+4. Tata Tigor
+5. Honda Amaze 2nd Gen
+6. Tata Tigor EV
+7. Skoda Kylaq
+8. Mahindra BE 6

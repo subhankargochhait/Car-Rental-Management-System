@@ -3,241 +3,275 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DriveEasy - Car Rental Services</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="stylesheet" href="../assets/css/style-services.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
-
- <script src="script.js"></script>
-
-    
+    <title>DriveEasy - Modern Car Rental</title>
+    <link rel="stylesheet" href="../assets/css/style-services.css">
+      
 </head>
-<body class="bg-gray-50">
+<body>
+     <!-- nav-bar-start -->
+    <div class="contaner">
+        <nav class="navbar">
+       <div class="logo">
+  <img src="../Frame.png" alt="Logo" />
+  <h3 style="color: #1572D3;">RENTCARS</h3>
+</div>
+       <div>
+         <ul>
+            <li><a href="../index.php" class="active">Home</a></li>
+            <li><a href="/Travarsa_Internship/Car-Rental-Management-System/pages/about.php" class="active">About Us</a></li>
+            <li><a href="/Travarsa_Internship/Car-Rental-Management-System/pages/services.php" class="active">Services</a></li>
+            <li><a href="/Travarsa_Internship/Car-Rental-Management-System/pages/contact_us.php" class="active">Contact Us</a></li>
+        </ul>
+       </div>
 
- <?php include('../includes/navbar.php'); ?>
+       <div class="nav-log">
+           <button type="submit" name="login"><a href="/Travarsa_Internship/Car-Rental-Management-System/pages/login.php" class="active" style="color: black;">Login</a></button>
 
+            <button id="signup-button"><a href="/Travarsa_Internship/Car-Rental-Management-System/pages/signup.php" class="active" style="color: white;">Sign Up</a></button>
+
+               <button id="signup-button"><a href="/Travarsa_Internship/Car-Rental-Management-System/pages/admin.php" class="active" style="color: white;">Admin/Login</a></button>
+        </div>
+
+    </nav>
+    <!-- nav-bar-end -->
     <!-- Hero Section -->
-    <section class="hero-gradient py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
-                Premium Car Rental Services
-            </h1>
-            <p class="text-xl text-indigo-100 mb-8 max-w-3xl mx-auto">
-                Experience the freedom of the road with our comprehensive car rental solutions. From economy to luxury, we have the perfect vehicle for every journey.
-            </p>
-            <button class="btn-primary text-white px-8 py-4 rounded-full text-lg font-semibold">
-                🚗 Explore Our Fleet
-            </button>
+    <section class="hero-section">
+        <div class="floating-element floating-1"></div>
+        <div class="floating-element floating-2"></div>
+        <div class="floating-element floating-3"></div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Drive Your<br>
+                    <span class="hero-subtitle">Adventure</span>
+                </h1>
+                <p class="hero-description">
+                    Discover premium car rentals with unmatched comfort, style, and convenience for every journey
+                </p>
+                <div class="button-group">
+                    <button class="btn btn-primary">Explore Fleet</button>
+                    <button class="btn btn-secondary">Learn More</button>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Rental Services</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Choose from our wide range of rental services designed to meet your specific needs and preferences.
-                </p>
-            </div>
+    <!-- Vehicle Categories -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Our Fleet</h2>
+            <p class="section-description">
+                Choose from our premium collection of vehicles designed for every adventure
+            </p>
 
-            <!-- Service Cards Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                <!-- Daily Rentals -->
-                <div class="service-card bg-white rounded-2xl p-8 shadow-lg relative overflow-hidden">
-                    <div class="absolute top-4 right-4 price-badge text-white px-3 py-1 rounded-full text-sm font-semibold">
-                        Popular
-                    </div>
-                    <div class="text-5xl mb-6">🚙</div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Daily Rentals</h3>
-                    <p class="text-gray-600 mb-6">Perfect for short trips and daily commutes. Flexible pickup and drop-off times with competitive rates.</p>
-                    <ul class="text-sm text-gray-600 mb-8 space-y-3">
-                        <li class="flex items-center"><span class="text-green-500 mr-3 text-lg">✓</span> 24/7 availability</li>
-                        <li class="flex items-center"><span class="text-green-500 mr-3 text-lg">✓</span> Free cancellation up to 24hrs</li>
-                        <li class="flex items-center"><span class="text-green-500 mr-3 text-lg">✓</span> Full insurance coverage included</li>
-                        <li class="flex items-center"><span class="text-green-500 mr-3 text-lg">✓</span> Unlimited mileage</li>
+            <div class="grid grid-3">
+                <!-- Economy -->
+                <div class="card gradient-card emerald-card">
+                    <span class="card-icon">🚗</span>
+                    <h3 class="card-title">Economy Class</h3>
+                    <p class="card-description">Perfect for city drives and budget-conscious travelers</p>
+                    <ul class="card-features">
+                        <li>
+                            <span class="feature-label">
+                                <span class="feature-icon">💰</span>
+                                <span>Starting Price</span>
+                            </span>
+                            <span class="feature-value">$25/day</span>
+                        </li>
+                        <li>
+                            <span class="feature-label">
+                                <span class="feature-icon">⛽</span>
+                                <span>Fuel Efficiency</span>
+                            </span>
+                            <span>Excellent</span>
+                        </li>
+                        <li>
+                            <span class="feature-label">
+                                <span class="feature-icon">👥</span>
+                                <span>Capacity</span>
+                            </span>
+                            <span>4-5 Seats</span>
+                        </li>
                     </ul>
-                    <div class="text-center">
-                        <div class="text-3xl font-bold text-indigo-600 mb-2">$29<span class="text-lg text-gray-500">/day</span></div>
-                        <button class="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors">
-                            Book Daily Rental
-                        </button>
-                    </div>
+                    <button class="card-button white-button">View Economy Cars</button>
                 </div>
 
-                <!-- Weekly Rentals -->
-                <div class="service-card bg-white rounded-2xl p-8 shadow-lg relative overflow-hidden">
-                    <div class="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                        Save 30%
-                    </div>
-                    <div class="text-5xl mb-6">📅</div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Weekly Rentals</h3>
-                    <p class="text-gray-600 mb-6">Extended stays made affordable. Perfect for business trips and extended vacations with special weekly rates.</p>
-                    <ul class="text-sm text-gray-600 mb-8 space-y-3">
-                        <li class="flex items-center"><span class="text-green-500 mr-3 text-lg">✓</span> Up to 30% savings vs daily</li>
-                        <li class="flex items-center"><span class="text-green-500 mr-3 text-lg">✓</span> Free GPS navigation system</li>
-                        <li class="flex items-center"><span class="text-green-500 mr-3 text-lg">✓</span> 24/7 roadside assistance</li>
-                        <li class="flex items-center"><span class="text-green-500 mr-3 text-lg">✓</span> Free additional driver</li>
+                <!-- SUV -->
+                <div class="card gradient-card blue-card">
+                    <span class="card-icon">🚙</span>
+                    <h3 class="card-title">SUV Collection</h3>
+                    <p class="card-description">Spacious comfort for families and group adventures</p>
+                    <ul class="card-features">
+                        <li>
+                            <span class="feature-label">
+                                <span class="feature-icon">💰</span>
+                                <span>Starting Price</span>
+                            </span>
+                            <span class="feature-value">$55/day</span>
+                        </li>
+                        <li>
+                            <span class="feature-label">
+                                <span class="feature-icon">🧳</span>
+                                <span>Cargo Space</span>
+                            </span>
+                            <span>Extra Large</span>
+                        </li>
+                        <li>
+                            <span class="feature-label">
+                                <span class="feature-icon">👥</span>
+                                <span>Capacity</span>
+                            </span>
+                            <span>7-8 Seats</span>
+                        </li>
                     </ul>
-                    <div class="text-center">
-                        <div class="text-3xl font-bold text-indigo-600 mb-2">$179<span class="text-lg text-gray-500">/week</span></div>
-                        <button class="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors">
-                            Book Weekly Rental
-                        </button>
-                    </div>
+                    <button class="card-button white-button blue">View SUV Collection</button>
                 </div>
 
-                <!-- Monthly Rentals -->
-                <div class="service-card bg-white rounded-2xl p-8 shadow-lg relative overflow-hidden">
-                    <div class="absolute top-4 right-4 bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                        Best Value
-                    </div>
-                    <div class="text-5xl mb-6">🗓️</div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Monthly Rentals</h3>
-                    <p class="text-gray-600 mb-6">Long-term solutions for extended stays. Ideal for relocations and temporary assignments with maximum savings.</p>
-                    <ul class="text-sm text-gray-600 mb-8 space-y-3">
-                        <li class="flex items-center"><span class="text-green-500 mr-3 text-lg">✓</span> Lowest rates guaranteed</li>
-                        <li class="flex items-center"><span class="text-green-500 mr-3 text-lg">✓</span> Vehicle maintenance included</li>
-                        <li class="flex items-center"><span class="text-green-500 mr-3 text-lg">✓</span> Flexible contract terms</li>
-                        <li class="flex items-center"><span class="text-green-500 mr-3 text-lg">✓</span> Priority vehicle selection</li>
+                <!-- Luxury -->
+                <div class="card gradient-card rose-card">
+                    <span class="card-icon">🏎️</span>
+                    <h3 class="card-title">Luxury Elite</h3>
+                    <p class="card-description">Premium vehicles for special occasions and VIP experiences</p>
+                    <ul class="card-features">
+                        <li>
+                            <span class="feature-label">
+                                <span class="feature-icon">💰</span>
+                                <span>Starting Price</span>
+                            </span>
+                            <span class="feature-value">$120/day</span>
+                        </li>
+                        <li>
+                            <span class="feature-label">
+                                <span class="feature-icon">✨</span>
+                                <span>Features</span>
+                            </span>
+                            <span>Premium</span>
+                        </li>
+                        <li>
+                            <span class="feature-label">
+                                <span class="feature-icon">🎯</span>
+                                <span>Service</span>
+                            </span>
+                            <span>VIP Treatment</span>
+                        </li>
                     </ul>
-                    <div class="text-center">
-                        <div class="text-3xl font-bold text-indigo-600 mb-2">$599<span class="text-lg text-gray-500">/month</span></div>
-                        <button class="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors">
-                            Book Monthly Rental
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Luxury Rentals -->
-                <div class="service-card bg-white rounded-2xl p-8 shadow-lg relative overflow-hidden">
-                    <div class="absolute top-4 right-4 bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                        Premium
-                    </div>
-                    <div class="text-5xl mb-6">💎</div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Luxury Rentals</h3>
-                    <p class="text-gray-600 mb-6">Premium vehicles for special occasions. Make every moment memorable with our luxury fleet collection.</p>
-                    <ul class="text-sm text-gray-600 mb-8 space-y-3">
-                        <li class="flex items-center"><span class="text-green-500 mr-3 text-lg">✓</span> Premium luxury brands</li>
-                        <li class="flex items-center"><span class="text-green-500 mr-3 text-lg">✓</span> White-glove delivery service</li>
-                        <li class="flex items-center"><span class="text-green-500 mr-3 text-lg">✓</span> Personal concierge support</li>
-                        <li class="flex items-center"><span class="text-green-500 mr-3 text-lg">✓</span> Complimentary car wash</li>
-                    </ul>
-                    <div class="text-center">
-                        <div class="text-3xl font-bold text-indigo-600 mb-2">$199<span class="text-lg text-gray-500">/day</span></div>
-                        <button class="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors">
-                            Book Luxury Car
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Corporate Rentals -->
-                <div class="service-card bg-white rounded-2xl p-8 shadow-lg relative overflow-hidden">
-                    <div class="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                        Business
-                    </div>
-                    <div class="text-5xl mb-6">🏢</div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Corporate Rentals</h3>
-                    <p class="text-gray-600 mb-6">Tailored solutions for businesses. Fleet management and corporate accounts with special enterprise pricing.</p>
-                    <ul class="text-sm text-gray-600 mb-8 space-y-3">
-                        <li class="flex items-center"><span class="text-green-500 mr-3 text-lg">✓</span> Volume discount pricing</li>
-                        <li class="flex items-center"><span class="text-green-500 mr-3 text-lg">✓</span> Dedicated account manager</li>
-                        <li class="flex items-center"><span class="text-green-500 mr-3 text-lg">✓</span> Flexible billing options</li>
-                        <li class="flex items-center"><span class="text-green-500 mr-3 text-lg">✓</span> Priority reservations</li>
-                    </ul>
-                    <div class="text-center">
-                        <div class="text-2xl font-bold text-indigo-600 mb-2">Custom Quote</div>
-                        <button class="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors">
-                            Get Corporate Quote
-                        </button>
-                    </div>
-                </div>
-
-                <!-- One-Way Rentals -->
-                <div class="service-card bg-white rounded-2xl p-8 shadow-lg relative overflow-hidden">
-                    <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                        Flexible
-                    </div>
-                    <div class="text-5xl mb-6">🛣️</div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">One-Way Rentals</h3>
-                    <p class="text-gray-600 mb-6">Pick up in one city, drop off in another. Perfect for road trips and relocations across the country.</p>
-                    <ul class="text-sm text-gray-600 mb-8 space-y-3">
-                        <li class="flex items-center"><span class="text-green-500 mr-3 text-lg">✓</span> 500+ pickup locations</li>
-                        <li class="flex items-center"><span class="text-green-500 mr-3 text-lg">✓</span> No return trip required</li>
-                        <li class="flex items-center"><span class="text-green-500 mr-3 text-lg">✓</span> Trip planning assistance</li>
-                        <li class="flex items-center"><span class="text-green-500 mr-3 text-lg">✓</span> Interstate travel approved</li>
-                    </ul>
-                    <div class="text-center">
-                        <div class="text-2xl font-bold text-indigo-600 mb-2">From $49/day</div>
-                        <button class="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors">
-                            Plan Your Trip
-                        </button>
-                    </div>
+                    <button class="card-button white-button rose">View Luxury Fleet</button>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section class="bg-white py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Why Choose Our Services?</h2>
-                <p class="text-xl text-gray-600">Experience the difference with our premium service features</p>
-            </div>
+    <section class="section features-section">
+        <div class="container">
+            <h2 class="section-title">Why Choose Us</h2>
+            <p class="section-description">Experience the difference with our premium services</p>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="feature-card text-center p-6">
-                    <div class="feature-icon text-6xl mb-4">🔒</div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Secure & Safe</h3>
-                    <p class="text-gray-600">All vehicles are regularly maintained and thoroughly sanitized for your safety and peace of mind.</p>
+            <div class="grid grid-4">
+                <div class="card feature-card">
+                    <div class="feature-icon-wrapper blue-gradient">🛡️</div>
+                    <h3 class="card-title">Full Protection</h3>
+                    <p class="card-description">Comprehensive insurance coverage with 24/7 roadside assistance for peace of mind</p>
                 </div>
 
-                <div class="feature-card text-center p-6">
-                    <div class="feature-icon text-6xl mb-4">⚡</div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Instant Booking</h3>
-                    <p class="text-gray-600">Book your car in seconds with our streamlined online reservation system available 24/7.</p>
+                <div class="card feature-card">
+                    <div class="feature-icon-wrapper emerald-gradient">🚚</div>
+                    <h3 class="card-title">Free Delivery</h3>
+                    <p class="card-description">Convenient vehicle delivery to your location anywhere within the city limits</p>
                 </div>
 
-                <div class="feature-card text-center p-6">
-                    <div class="feature-icon text-6xl mb-4">🌟</div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Premium Fleet</h3>
-                    <p class="text-gray-600">Choose from our extensive collection of well-maintained, modern vehicles from top brands.</p>
+                <div class="card feature-card">
+                    <div class="feature-icon-wrapper purple-gradient">📱</div>
+                    <h3 class="card-title">Easy Booking</h3>
+                    <p class="card-description">Simple online booking process with instant confirmation and flexible options</p>
                 </div>
 
-                <div class="feature-card text-center p-6">
-                    <div class="feature-icon text-6xl mb-4">📞</div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">24/7 Support</h3>
-                    <p class="text-gray-600">Round-the-clock customer support and roadside assistance whenever you need help.</p>
+                <div class="card feature-card">
+                    <div class="feature-icon-wrapper amber-gradient">🎧</div>
+                    <h3 class="card-title">24/7 Support</h3>
+                    <p class="card-description">Round-the-clock customer service to assist you throughout your rental experience</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="hero-gradient py-20">
-        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-bold text-white mb-6">Ready to Hit the Road?</h2>
-            <p class="text-xl text-indigo-100 mb-8">
-                Join thousands of satisfied customers who trust us for their car rental needs. Book now and start your journey!
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <button class="bg-white text-indigo-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors">
-                    🚗 Book Your Car Now
-                </button>
-                <button class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-indigo-600 transition-colors">
-                    📱 Call: 1-800-RENTALS
-                </button>
+    <!-- Pricing Section -->
+    <section class="section pricing-section">
+        <div class="container">
+            <h2 class="section-title">Simple Pricing</h2>
+            <p class="section-description">Choose the perfect plan for your journey</p>
+
+            <div class="grid grid-3">
+                <!-- Hourly -->
+                <div class="card price-card">
+                    <div class="price-icon">⚡</div>
+                    <h3 class="price-title">Quick Rental</h3>
+                    <div class="price-amount">$12</div>
+                    <div class="price-period">per hour</div>
+                    <ul class="price-features">
+                        <li><span class="check-icon">✓</span>Instant booking</li>
+                        <li><span class="check-icon">✓</span>Fuel included</li>
+                        <li><span class="check-icon">✓</span>Basic insurance</li>
+                        <li><span class="check-icon">✓</span>City driving</li>
+                    </ul>
+                    <button class="card-button btn-primary">Book Hourly</button>
+                </div>
+
+                <!-- Daily -->
+                <div class="card price-card popular-card">
+                    <div class="popular-badge">MOST POPULAR</div>
+                    <div class="price-icon">🌟</div>
+                    <h3 class="price-title">Daily Adventure</h3>
+                    <div class="price-amount">$45</div>
+                    <div class="price-period">per day</div>
+                    <ul class="price-features">
+                        <li><span class="check-icon">✓</span>24-hour access</li>
+                        <li><span class="check-icon">✓</span>300 miles included</li>
+                        <li><span class="check-icon">✓</span>Full insurance</li>
+                        <li><span class="check-icon">✓</span>GPS navigation</li>
+                        <li><span class="check-icon">✓</span>24/7 support</li>
+                    </ul>
+                    <button class="card-button btn-primary">Book Daily</button>
+                </div>
+
+                <!-- Weekly -->
+                <div class="card price-card">
+                    <div class="price-icon">🏆</div>
+                    <h3 class="price-title">Weekly Freedom</h3>
+                    <div class="price-amount">$280</div>
+                    <div class="price-period">per week</div>
+                    <ul class="price-features">
+                        <li><span class="check-icon">✓</span>7-day rental</li>
+                        <li><span class="check-icon">✓</span>Unlimited miles</li>
+                        <li><span class="check-icon">✓</span>Premium insurance</li>
+                        <li><span class="check-icon">✓</span>Concierge service</li>
+                        <li><span class="check-icon">✓</span>Free upgrades</li>
+                    </ul>
+                    <button class="card-button btn-primary">Book Weekly</button>
+                </div>
             </div>
         </div>
     </section>
 
-      <!-- Footer-section-start -->
-<?php include('../includes/footer.php'); ?>
-
-
+    <!-- Call to Action -->
+    <section class="section cta-section">
+        <div class="cta-floating-1"></div>
+        <div class="cta-floating-2"></div>
+        
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Drive?</h2>
+                <p class="cta-description">
+                    Join thousands of satisfied customers who've discovered the joy of premium car rentals. 
+                    Your perfect vehicle is just one click away.
+                </p>
+                <div class="button-group">
+                    <button class="btn btn-white">Start Your Journey</button>
+                    <button class="btn btn-outline">📞 Call: (555) 123-RENT</button>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 </html>

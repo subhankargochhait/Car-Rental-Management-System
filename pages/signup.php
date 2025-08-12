@@ -16,6 +16,8 @@
         <input  type="text" name="name" placeholder="Full Name" required />
         <input  type="email" name="email" placeholder="Email" required />
         <input  type="number" name="phone" placeholder="Phone Number" required />
+        <input  type="text" name="driver-l" placeholder="Driver's License" required />
+        <input  type="text" name="address" placeholder="Address" required />
         <input  type="password" name="password" placeholder="Password" required />
         <button type="submit" name="submit">Sign Up</button>
       </form>

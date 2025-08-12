@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 if (!isset($_SESSION["un"])) {
     header("Location: login.php");
     exit;
@@ -22,55 +22,7 @@ if (!isset($_SESSION["un"])) {
     <style>
         body{
             background-color: white;
-             font-family: 'Poppins', sans-serif;
-             font-size: 13px;
         }
-    h1 {
-        font-size: 2rem;
-        margin-bottom: 30px;
-        font-weight: bold;
-        color: #222;
-    }
-    .menu {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        max-width: 350px;
-    }
-    .menu a {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 14px 20px;
-        border-radius: 50px;
-        font-size: 1.1rem;
-        font-weight: 500;
-        text-decoration: none;
-        color: white;
-        box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-        transition: all 0.3s ease;
-    }
-    .menu a:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.25);
-    }
-    /* Different button colors */
-    .cars {
-        background: linear-gradient(90deg, #ff7e5f, #feb47b);
-    }
-    .booking {
-        background: linear-gradient(90deg, #6a11cb, #2575fc);
-    }
-    .rentals {
-        background: linear-gradient(90deg, #ff416c, #ff4b2b);
-    }
-    /* Icon style */
-    .icon {
-        font-size: 1.3rem;
-        background: rgba(255,255,255,0.15);
-        padding: 8px;
-        border-radius: 50%;
-    }
         .main-content{
             margin-left: 60px;
             margin-bottom: 250px;
@@ -126,23 +78,6 @@ if (!isset($_SESSION["un"])) {
     </nav>
     <!-- nav-bar-end -->
 
-    <!-- Hero Section Start -->
-         <h1 style="margin-left: 60px;">Welcome to your Dashboard,</h1>
-    
-     <div class="menu main-content">
-    <a href="../pages/browse-car.php" class="cars">
-        <span class="icon">🚗</span> Browser Available Cars
-    </a>
-    <a href="../pages/book-rental.php" class="booking">
-        <span class="icon">✅</span> Make New Booking
-    </a>
-    <a href="#" class="rentals">
-        <span class="icon">📄</span> View My Rentals
-    </a>
-</div>
-    <!-- Hero Section End -->
 
-          <!-- Footer-section-start -->
-<?php include('../includes/footer.php'); ?>
 </body>
 </html>
