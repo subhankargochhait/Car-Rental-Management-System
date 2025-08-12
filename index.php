@@ -34,7 +34,7 @@
 
             <button id="signup-button"><a href="/Travarsa_Internship/Car-Rental-Management-System/pages/signup.php" class="active" style="color: white;">Sign Up</a></button>
 
-               <button id="signup-button"><a href="/Travarsa_Internship/Car-Rental-Management-System/pages/admin.php" class="active" style="color: white;">Admin/Login</a></button>
+               <button id="signup-button"><a href="/Travarsa_Internship/Car-Rental-Management-System/admin/login.php" class="active" style="color: white;">Admin/Login</a></button>
         </div>
 
     </nav>
