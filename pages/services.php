@@ -1,277 +1,208 @@
+<?php
+include("../config/db.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DriveEasy - Modern Car Rental</title>
-    <link rel="stylesheet" href="../assets/css/style-services.css">
-      
+    <title>Services-page</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+<!-- <link rel="stylesheet" href="../assets/css/admin.css"> -->
+ <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
-     <!-- nav-bar-start -->
-    <div class="contaner">
-        <nav class="navbar">
-       <div class="logo">
-  <img src="../Frame.png" alt="Logo" />
-  <h3 style="color: #1572D3;">RENTCARS</h3>
-</div>
-       <div>
-         <ul>
-            <li><a href="../index.php" class="active">Home</a></li>
-            <li><a href="/Travarsa_Internship/Car-Rental-Management-System/pages/about.php" class="active">About Us</a></li>
-            <li><a href="/Travarsa_Internship/Car-Rental-Management-System/pages/services.php" class="active">Services</a></li>
-            <li><a href="/Travarsa_Internship/Car-Rental-Management-System/pages/contact_us.php" class="active">Contact Us</a></li>
-        </ul>
-       </div>
+    <style>
+        body{
+            background-color: white;
+        }
+    .btn-logout,a{
+    padding: 5px 10px;
+    border-radius: 5px;
+        }
 
-       <div class="nav-log">
-           <button type="submit" name="login"><a href="/Travarsa_Internship/Car-Rental-Management-System/pages/login.php" class="active" style="color: black;">Login</a></button>
+         .container {
+        max-width: 1100px;
+        margin: auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
 
-            <button id="signup-button"><a href="/Travarsa_Internship/Car-Rental-Management-System/pages/signup.php" class="active" style="color: white;">Sign Up</a></button>
+    h2 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
 
-               <button id="signup-button"><a href="/Travarsa_Internship/Car-Rental-Management-System/pages/admin.php" class="active" style="color: white;">Admin/Login</a></button>
-        </div>
+    .filters {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+    }
 
-    </nav>
+    select, input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 14px;
+    }
+
+    .btn {
+        padding: 10px 16px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .btn-primary {
+        background: #2563eb;
+        color: white;
+    }
+
+    .btn-secondary {
+        background: #d1d5db;
+        color: #333;
+    }
+
+    .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .card {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .card img {
+        width: 80px;
+        margin-bottom: 10px;
+    }
+
+    .card h3 {
+        font-size: 20px;
+        margin: 10px 0 5px;
+    }
+
+    .card p {
+        color: #555;
+        margin: 0 0 10px;
+    }
+
+    .price {
+        font-weight: bold;
+        color: #2563eb;
+    }
+
+    .status {
+        display: inline-block;
+        padding: 4px 10px;
+        background: #d1fae5;
+        color: #065f46;
+        border-radius: 20px;
+        font-size: 12px;
+        margin-left: 5px;
+    }
+
+    .book-btn {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(to right, #4f46e5, #3b82f6);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+.status-unavailable {
+    background-color: #ffe5e5; /* light red */
+    border: 1px solid #ff4d4d;
+}
+.status-unavailable .status {
+    background: #ff4d4d;
+    color: white;
+}
+
+    </style>
+  <!-- nav-bar-start -->
+<?php include('../includes/navbar.php') ?>
+   
     <!-- nav-bar-end -->
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="floating-element floating-1"></div>
-        <div class="floating-element floating-2"></div>
-        <div class="floating-element floating-3"></div>
-        
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    Drive Your<br>
-                    <span class="hero-subtitle">Adventure</span>
-                </h1>
-                <p class="hero-description">
-                    Discover premium car rentals with unmatched comfort, style, and convenience for every journey
-                </p>
-                <div class="button-group">
-                    <button class="btn btn-primary">Explore Fleet</button>
-                    <button class="btn btn-secondary">Learn More</button>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Vehicle Categories -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Our Fleet</h2>
-            <p class="section-description">
-                Choose from our premium collection of vehicles designed for every adventure
-            </p>
+    <!-- Hero Section Start -->
+    
+    <div class="container">
+    <h2>Available Cars</h2>
+    
+    <div class="filters">
+        <select id="carFilter">
+    <option value="All">All Types</option>
+    <option value="SUV">SUV</option>
+    <option value="Compact">Compact</option>
+    <option value="Mid-size">Mid-size</option>
+</select>
+        <input type="text" placeholder="Max Price/Day">
+        <button class="btn btn-primary">Apply Filters</button>
+        <button class="btn btn-secondary">Clear</button>
+    </div>
 
-            <div class="grid grid-3">
-                <!-- Economy -->
-                <div class="card gradient-card emerald-card">
-                    <span class="card-icon">🚗</span>
-                    <h3 class="card-title">Economy Class</h3>
-                    <p class="card-description">Perfect for city drives and budget-conscious travelers</p>
-                    <ul class="card-features">
-                        <li>
-                            <span class="feature-label">
-                                <span class="feature-icon">💰</span>
-                                <span>Starting Price</span>
-                            </span>
-                            <span class="feature-value">$25/day</span>
-                        </li>
-                        <li>
-                            <span class="feature-label">
-                                <span class="feature-icon">⛽</span>
-                                <span>Fuel Efficiency</span>
-                            </span>
-                            <span>Excellent</span>
-                        </li>
-                        <li>
-                            <span class="feature-label">
-                                <span class="feature-icon">👥</span>
-                                <span>Capacity</span>
-                            </span>
-                            <span>4-5 Seats</span>
-                        </li>
-                    </ul>
-                    <button class="card-button white-button">View Economy Cars</button>
-                </div>
+    <div class="card-grid">
+<?php
+$sql = "SELECT image, car_name, car_type, daily_rate, status FROM cars";
+$result = $con->query($sql);
 
-                <!-- SUV -->
-                <div class="card gradient-card blue-card">
-                    <span class="card-icon">🚙</span>
-                    <h3 class="card-title">SUV Collection</h3>
-                    <p class="card-description">Spacious comfort for families and group adventures</p>
-                    <ul class="card-features">
-                        <li>
-                            <span class="feature-label">
-                                <span class="feature-icon">💰</span>
-                                <span>Starting Price</span>
-                            </span>
-                            <span class="feature-value">$55/day</span>
-                        </li>
-                        <li>
-                            <span class="feature-label">
-                                <span class="feature-icon">🧳</span>
-                                <span>Cargo Space</span>
-                            </span>
-                            <span>Extra Large</span>
-                        </li>
-                        <li>
-                            <span class="feature-label">
-                                <span class="feature-icon">👥</span>
-                                <span>Capacity</span>
-                            </span>
-                            <span>7-8 Seats</span>
-                        </li>
-                    </ul>
-                    <button class="card-button white-button blue">View SUV Collection</button>
-                </div>
+while ($row = $result->fetch_assoc()) {
+    // Add CSS class if unavailable
+    $statusClass = ($row['status'] === 'Available') ? 'status-available' : 'status-unavailable';
+?>
+    <div class="card <?php echo $statusClass; ?>" data-type="<?php echo htmlspecialchars($row['car_type']); ?>">
+        <img src="../admin/car_images/<?php echo htmlspecialchars($row['image']); ?>" alt="Car Image" style="width:100%; height:150px; object-fit:cover;">
+        <h3><?php echo htmlspecialchars($row['car_name']); ?></h3>
+        <p><?php echo htmlspecialchars($row['car_type']); ?></p>
+        <p>Daily Rate: <span class="price"><?php echo htmlspecialchars($row['daily_rate']); ?></span></p>
+        <p>Status: <span class="status"><?php echo htmlspecialchars($row['status']); ?></span></p>
+        <button class="book-btn">Book This Car</button>
+    </div>
+<?php
+}
+?>
+</div>
 
-                <!-- Luxury -->
-                <div class="card gradient-card rose-card">
-                    <span class="card-icon">🏎️</span>
-                    <h3 class="card-title">Luxury Elite</h3>
-                    <p class="card-description">Premium vehicles for special occasions and VIP experiences</p>
-                    <ul class="card-features">
-                        <li>
-                            <span class="feature-label">
-                                <span class="feature-icon">💰</span>
-                                <span>Starting Price</span>
-                            </span>
-                            <span class="feature-value">$120/day</span>
-                        </li>
-                        <li>
-                            <span class="feature-label">
-                                <span class="feature-icon">✨</span>
-                                <span>Features</span>
-                            </span>
-                            <span>Premium</span>
-                        </li>
-                        <li>
-                            <span class="feature-label">
-                                <span class="feature-icon">🎯</span>
-                                <span>Service</span>
-                            </span>
-                            <span>VIP Treatment</span>
-                        </li>
-                    </ul>
-                    <button class="card-button white-button rose">View Luxury Fleet</button>
-                </div>
-            </div>
-        </div>
-    </section>
+</div>
 
-    <!-- Features Section -->
-    <section class="section features-section">
-        <div class="container">
-            <h2 class="section-title">Why Choose Us</h2>
-            <p class="section-description">Experience the difference with our premium services</p>
+    <!-- Hero Section End -->
 
-            <div class="grid grid-4">
-                <div class="card feature-card">
-                    <div class="feature-icon-wrapper blue-gradient">🛡️</div>
-                    <h3 class="card-title">Full Protection</h3>
-                    <p class="card-description">Comprehensive insurance coverage with 24/7 roadside assistance for peace of mind</p>
-                </div>
+          <!-- Footer-section-start -->
+<?php include('../includes/footer.php'); ?>
 
-                <div class="card feature-card">
-                    <div class="feature-icon-wrapper emerald-gradient">🚚</div>
-                    <h3 class="card-title">Free Delivery</h3>
-                    <p class="card-description">Convenient vehicle delivery to your location anywhere within the city limits</p>
-                </div>
+<script>
+document.getElementById('carFilter').addEventListener('change', function () {
+    let selectedType = this.value;
+    let cars = document.querySelectorAll('.card');
 
-                <div class="card feature-card">
-                    <div class="feature-icon-wrapper purple-gradient">📱</div>
-                    <h3 class="card-title">Easy Booking</h3>
-                    <p class="card-description">Simple online booking process with instant confirmation and flexible options</p>
-                </div>
+    cars.forEach(card => {
+        let carType = card.getAttribute('data-type');
+        if (selectedType === "All" || carType === selectedType) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+});
+</script>
 
-                <div class="card feature-card">
-                    <div class="feature-icon-wrapper amber-gradient">🎧</div>
-                    <h3 class="card-title">24/7 Support</h3>
-                    <p class="card-description">Round-the-clock customer service to assist you throughout your rental experience</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section class="section pricing-section">
-        <div class="container">
-            <h2 class="section-title">Simple Pricing</h2>
-            <p class="section-description">Choose the perfect plan for your journey</p>
-
-            <div class="grid grid-3">
-                <!-- Hourly -->
-                <div class="card price-card">
-                    <div class="price-icon">⚡</div>
-                    <h3 class="price-title">Quick Rental</h3>
-                    <div class="price-amount">$12</div>
-                    <div class="price-period">per hour</div>
-                    <ul class="price-features">
-                        <li><span class="check-icon">✓</span>Instant booking</li>
-                        <li><span class="check-icon">✓</span>Fuel included</li>
-                        <li><span class="check-icon">✓</span>Basic insurance</li>
-                        <li><span class="check-icon">✓</span>City driving</li>
-                    </ul>
-                    <button class="card-button btn-primary">Book Hourly</button>
-                </div>
-
-                <!-- Daily -->
-                <div class="card price-card popular-card">
-                    <div class="popular-badge">MOST POPULAR</div>
-                    <div class="price-icon">🌟</div>
-                    <h3 class="price-title">Daily Adventure</h3>
-                    <div class="price-amount">$45</div>
-                    <div class="price-period">per day</div>
-                    <ul class="price-features">
-                        <li><span class="check-icon">✓</span>24-hour access</li>
-                        <li><span class="check-icon">✓</span>300 miles included</li>
-                        <li><span class="check-icon">✓</span>Full insurance</li>
-                        <li><span class="check-icon">✓</span>GPS navigation</li>
-                        <li><span class="check-icon">✓</span>24/7 support</li>
-                    </ul>
-                    <button class="card-button btn-primary">Book Daily</button>
-                </div>
-
-                <!-- Weekly -->
-                <div class="card price-card">
-                    <div class="price-icon">🏆</div>
-                    <h3 class="price-title">Weekly Freedom</h3>
-                    <div class="price-amount">$280</div>
-                    <div class="price-period">per week</div>
-                    <ul class="price-features">
-                        <li><span class="check-icon">✓</span>7-day rental</li>
-                        <li><span class="check-icon">✓</span>Unlimited miles</li>
-                        <li><span class="check-icon">✓</span>Premium insurance</li>
-                        <li><span class="check-icon">✓</span>Concierge service</li>
-                        <li><span class="check-icon">✓</span>Free upgrades</li>
-                    </ul>
-                    <button class="card-button btn-primary">Book Weekly</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section class="section cta-section">
-        <div class="cta-floating-1"></div>
-        <div class="cta-floating-2"></div>
-        
-        <div class="container">
-            <div class="cta-content">
-                <h2 class="cta-title">Ready to Drive?</h2>
-                <p class="cta-description">
-                    Join thousands of satisfied customers who've discovered the joy of premium car rentals. 
-                    Your perfect vehicle is just one click away.
-                </p>
-                <div class="button-group">
-                    <button class="btn btn-white">Start Your Journey</button>
-                    <button class="btn btn-outline">📞 Call: (555) 123-RENT</button>
-                </div>
-            </div>
-        </div>
-    </section>
 </body>
 </html>

@@ -34,15 +34,7 @@ if (session_status() === PHP_SESSION_NONE) {
             min-height: 100vh;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
-        .main-container {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
-            margin: 2rem auto;
-            padding: 2rem;
-        }
+    
         
         .table-container {
             border-radius: 15px;
@@ -172,6 +164,7 @@ if (session_status() === PHP_SESSION_NONE) {
                     <table class="table table-hover mb-0" id="userTable">
                         <thead>
                             <tr>
+                                <th>uid</th>
                                 <th>Full Name</th>
                                 <th>Email</th>
                                 <th>Phone</th>
@@ -183,25 +176,26 @@ if (session_status() === PHP_SESSION_NONE) {
                         <tbody id="userTableBody">
                             
                                 <?php
-$sql = "SELECT full_name, email, phone, driver_license, address FROM signup";
+$sql = "SELECT uid , full_name, email, phone, driver_license, address FROM signup";
 $result = $con->query($sql);
 while($row = $result->fetch_assoc()) {
                               echo "<tr data-id='id'>
+            <td>{$row['uid']}</td>
             <td>{$row['full_name']}</td>
             <td>{$row['email']}</td>
             <td>{$row['phone']}</td>
             <td>{$row['driver_license']}</td>
             <td>{$row['address']}</td>
             <td>
-                <button class='btn btn-info btn-sm btn-action' onclick='viewUser()'>
-                    <i class='bi bi-eye'></i> View
-                </button>
-                <button class='btn btn-warning btn-sm btn-action' onclick='editUser()'>
-                    <i class='bi bi-pencil'></i> Edit
-                </button>
-                <button class='btn btn-danger btn-sm btn-action' onclick='deleteUser()'>
-                    <i class='bi bi-trash'></i> Delete
-                </button>
+             <a class='btn btn-info btn-sm btn-action' href='user_view.php?uid=" . urlencode($row['uid']) . "' class='btn btn-view'>View</a>
+               <a class='btn btn-success btn-sm btn-action' href='edit_user.php?uid=" . urlencode($row['uid']) . "' 
+                   class='btn btn-edit';\">
+                   Edit
+             <a class='btn btn-danger btn-sm btn-action'  href='del_user.php?did=" . urlencode($row['uid']) . "' 
+                   onclick=\"return confirm('Are you sure you want to delete this car?');\">
+                   Delete
+                </a>
+
             </td>
         </tr>";
 } ?>
@@ -363,28 +357,6 @@ while($row = $result->fetch_assoc()) {
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
 
-    <script>
-        // Add button functionality
-        document.querySelectorAll('.btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const row = this.closest('tr');
-                const carName = row.cells[1].textContent;
-                const carId = row.cells[0].textContent;
-                
-                if (this.classList.contains('btn-view')) {
-                    alert(`Viewing details for ${carName} (ID: ${carId})`);
-                } else if (this.classList.contains('btn-edit')) {
-                    alert(`Editing ${carName} (ID: ${carId})`);
-                } else if (this.classList.contains('btn-delete')) {
-                    if (confirm(`Delete ${carName}?`)) {
-                        row.remove();
-                        alert(`${carName} deleted successfully!`);
-                    }
-                }
-            });
-        });
-    </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96e12294d1163e1b',t:'MTc1NTAxMzg5OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 
 </body>
 

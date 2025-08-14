@@ -23,7 +23,7 @@ $s = $_POST["status"];
     if ($con->query($ins)) {
        echo "<script>
             alert('Successfully Data inserted');
-            window.location.href = 'add_cars.php';
+            window.location.href = 'list_cars.php';
           </script>";
     } else {
         echo "Error: " . $con->error;

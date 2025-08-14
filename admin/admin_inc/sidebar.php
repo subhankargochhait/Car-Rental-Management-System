@@ -1,4 +1,10 @@
+<?php
 
+if (!isset($_SESSION["un"]) || empty($_SESSION["un"])) {
+    header("Location:login.php");
+    exit;
+}
+?>
 <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 

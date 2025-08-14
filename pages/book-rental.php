@@ -47,9 +47,9 @@ if (!isset($_SESSION["un"])) {
             <label for="selectCar" class="form-label">Select Car</label>
             <select class="form-select" id="selectCar" name="cars" required>
                 <option selected>Choose a car...</option>
-                <option value="Toyota Corolla">Toyota Corolla</option>
-                <option value="Honda Civic">Honda Civic</option>
-                <option value="Ford Focus">Ford Focus</option>
+                <option value="SUV">SUV</option>
+                <option value="COMPACT">COMPACT</option>
+                <option value="MID-SIZE">MID-SIZE</option>
             </select>
         </div>
 
@@ -68,64 +68,8 @@ if (!isset($_SESSION["un"])) {
     </div>
    </form>
 
-    <!-- Availability Calendar -->
-    <h4 class="fw-semibold">Availability Calendar</h4>
-    <div class="card p-4 shadow-sm">
-        <h5 class="text-center mb-4">August 2025</h5>
-        <div class="row text-center fw-bold mb-2">
-            <div class="col">Sun</div>
-            <div class="col">Mon</div>
-            <div class="col">Tue</div>
-            <div class="col">Wed</div>
-            <div class="col">Thu</div>
-            <div class="col">Fri</div>
-            <div class="col">Sat</div>
-        </div>
+    
 
-        <!-- Calendar Dates -->
-        <div class="row text-center">
-            <div class="col"></div> <!-- Empty for start offset -->
-            <div class="col calendar-day">1</div>
-            <div class="col calendar-day">2</div>
-            <div class="col calendar-day">3</div>
-            <div class="col calendar-day">4</div>
-            <div class="col calendar-day">5</div>
-            <div class="col calendar-day">6</div>
-        </div>
-        <div class="row text-center">
-            <div class="col calendar-day">7</div>
-            <div class="col calendar-day">8</div>
-            <div class="col calendar-day">9</div>
-            <div class="col calendar-day">10</div>
-            <div class="col calendar-day">11</div>
-            <div class="col calendar-day">12</div>
-            <div class="col calendar-day">13</div>
-        </div>
-        <div class="row text-center">
-            <div class="col calendar-day">14</div>
-            <div class="col calendar-day">15</div>
-            <div class="col calendar-day">16</div>
-            <div class="col calendar-day">17</div>
-            <div class="col calendar-day">18</div>
-            <div class="col calendar-day">19</div>
-            <div class="col calendar-day">20</div>
-        </div>
-        <div class="row text-center">
-            <div class="col calendar-day">21</div>
-            <div class="col calendar-day">22</div>
-            <div class="col calendar-day">23</div>
-            <div class="col calendar-day">24</div>
-            <div class="col calendar-day">25</div>
-            <div class="col calendar-day">26</div>
-            <div class="col calendar-day">27</div>
-        </div>
-        <div class="row text-center">
-            <div class="col calendar-day">28</div>
-            <div class="col calendar-day">29</div>
-            <div class="col calendar-day">30</div>
-            <div class="col calendar-day">31</div>
-        </div>
-        <!-- Add more weeks here -->
     </div>
 </div>
 

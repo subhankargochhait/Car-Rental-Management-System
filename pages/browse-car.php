@@ -1,4 +1,5 @@
 <?php
+include("../config/db.php");
 session_start();
 if (!isset($_SESSION["un"])) {
     header("Location: login.php");
@@ -11,11 +12,12 @@ if (!isset($_SESSION["un"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Services-page</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
 <!-- <link rel="stylesheet" href="../assets/css/admin.css"> -->
+ <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
     <style>
@@ -130,6 +132,15 @@ if (!isset($_SESSION["un"])) {
         cursor: pointer;
         margin-top: 10px;
     }
+.status-unavailable {
+    background-color: #ffe5e5; /* light red */
+    border: 1px solid #ff4d4d;
+}
+.status-unavailable .status {
+    background: #ff4d4d;
+    color: white;
+}
+
     </style>
   <!-- nav-bar-start -->
 <?php include('../includes/navbar-user.php') ?>
@@ -154,231 +165,27 @@ if (!isset($_SESSION["un"])) {
     </div>
 
     <div class="card-grid">
-        <div class="card" data-type="SUV">
-            
-            <img style="height: 150px; width: 250px;" src="../assets/images/SUV-CARS/1.png" alt="Car">
-            <h3>Defender</h3>
-            <p>SUV</p>
-            <p>Daily Rate: <span class="price">$45</span></p>
-            <p>Status: <span class="status">Available</span></p>
-            <button class="book-btn">Book This Car</button>
-        </div>
+<?php
+$sql = "SELECT image, car_name, car_type, daily_rate, status FROM cars";
+$result = $con->query($sql);
 
-        <div class="card" data-type="SUV">
-            <img style="height: 150px; width: 250px;" src="../assets/images/SUV-CARS/2.png" alt="Car">
-            <h3>Mahindra Scorpio</h3>
-            <p>SUV</p>
-            <p>Daily Rate: <span class="price">$35</span></p>
-            <p>Status: <span class="status">Available</span></p>
-            <button class="book-btn">Book This Car</button>
-        </div>
-
-         <div class="card" data-type="SUV">
-            <img style="height: 150px; width: 250px;" src="../assets/images/SUV-CARS/3.png" alt="Car">
-            <h3>Hyundai Creta</h3>
-            <p>SUV</p>
-            <p>Daily Rate: <span class="price">$45</span></p>
-            <p>Status: <span class="status">Available</span></p>
-            <button class="book-btn">Book This Car</button>
-        </div>
-
-        <div class="card" data-type="SUV">
-            <img style="height: 150px; width: 250px;" src="../assets/images//SUV-CARS/4.png" alt="Car">
-            <h3>Mahindra Thar ROXX</h3>
-            <p>SUV</p>
-            <p>Daily Rate: <span class="price">$35</span></p>
-            <p>Status: <span class="status">Available</span></p>
-            <button class="book-btn">Book This Car</button>
-        </div>
-
-         <div class="card" data-type="SUV">
-            <img style="height: 150px; width: 250px;" src="../assets/images/SUV-CARS/5.png" alt="Car">
-            <h3>Tata Nexon</h3>
-            <p>SUV</p>
-            <p>Daily Rate: <span class="price">$45</span></p>
-            <p>Status: <span class="status">Available</span></p>
-            <button class="book-btn">Book This Car</button>
-        </div>
-
-        <div class="card" data-type="SUV">
-            <img style="height: 150px; width: 250px;" src="../assets/images/SUV-CARS/6.png" alt="Car">
-            <h3>Tata Harrier</h3>
-            <p>SUV</p>
-            <p>Daily Rate: <span class="price">$35</span></p>
-            <p>Status: <span class="status">Available</span></p>
-            <button class="book-btn">Book This Car</button>
-        </div>
-
-         <div class="card" data-type="SUV">
-            <img style="height: 150px; width: 250px;" src="../assets/images/SUV-CARS/7.png" alt="Car">
-            <h3>Maruti FRONX</h3>
-            <p>SUV</p>
-            <p>Daily Rate: <span class="price">$45</span></p>
-            <p>Status: <span class="status">Available</span></p>
-            <button class="book-btn">Book This Car</button>
-        </div>
-
-        <div class="card" data-type="SUV">
-            <img style="height: 150px; width: 250px;" src="../assets/images/SUV-CARS/8.png" alt="Car">
-            <h3>2023 Honda Civic</h3>
-            <p>Compact</p>
-            <p>Daily Rate: <span class="price">$35</span></p>
-            <p>Status: <span class="status">Available</span></p>
-            <button class="book-btn">Book This Car</button>
-        </div>
-        </div>
-
-
-        <!-- <h2 data-type="Compact">COMPACT-CARS</h2> -->
-        <div class="card-grid">
-         <div class="card" data-type="Compact">
-            <img style="height: 150px; width: 250px;" src="../assets/images/COMPACT-CARS/1.png" alt="Car">
-            <h3>Maruti Swift</h3>
-            <p>Compact</p>
-            <p>Daily Rate: <span class="price">$35</span></p>
-            <p>Status: <span class="status">Available</span></p>
-            <button class="book-btn">Book This Car</button>
-        </div>
-
-         <div class="card" data-type="Compact">
-            <img style="height: 150px; width: 250px;" src="../assets/images/COMPACT-CARS/2.png" alt="Car">
-            <h3>Maruti Swift</h3>
-            <p>Compact</p>
-            <p>Daily Rate: <span class="price">$35</span></p>
-            <p>Status: <span class="status">Available</span></p>
-            <button class="book-btn">Book This Car</button>
-        </div>
-
-         <div class="card" data-type="Compact">
-            <img style="height: 150px; width: 250px;" src="../assets/images/COMPACT-CARS/3.png" alt="Car">
-            <h3>Tata Tiago</h3>
-            <p>Compact</p>
-            <p>Daily Rate: <span class="price">$35</span></p>
-            <p>Status: <span class="status">Available</span></p>
-            <button class="book-btn">Book This Car</button>
-        </div>
-
-         <div class="card" data-type="Compact">
-            <img style="height: 150px; width: 250px;" src="../assets/images/COMPACT-CARS/4.png" alt="Car">
-            <h3>Maruti Wagon R</h3>
-            <p>Compact</p>
-            <p>Daily Rate: <span class="price">$35</span></p>
-            <p>Status: <span class="status">Available</span></p>
-            <button class="book-btn">Book This Car</button>
-        </div>
-
-        <div class="card" data-type="Compact">
-            <img style="height: 150px; width: 250px;" src="../assets/images/COMPACT-CARS/5.png" alt="Car">
-            <h3>Tata Altroz</h3>
-            <p>Compact</p>
-            <p>Daily Rate: <span class="price">$35</span></p>
-            <p>Status: <span class="status">Available</span></p>
-            <button class="book-btn">Book This Car</button>
-        </div>
-
-        <div class="card" data-type="Compact">
-            <img style="height: 150px; width: 250px;" src="../assets/images/COMPACT-CARS/6.png" alt="Car">
-            <h3>Hyundai i20</h3>
-            <p>Compact</p>
-            <p>Daily Rate: <span class="price">$35</span></p>
-            <p>Status: <span class="status">Available</span></p>
-            <button class="book-btn">Book This Car</button>
-        </div>
-
-        <div class="card" data-type="Compact">
-            <img style="height: 150px; width: 250px;" src="../assets/images/COMPACT-CARS/7.png" alt="Car">
-            <h3>Maruti Alto K10</h3>
-            <p>Compact</p>
-            <p>Daily Rate: <span class="price">$35</span></p>
-            <p>Status: <span class="status">Available</span></p>
-            <button class="book-btn">Book This Car</button>
-        </div>
-
-        <div class="card" data-type="Compact">
-            <img style="height: 150px; width: 250px;" src="../assets/images/COMPACT-CARS/8.png" alt="Car">
-            <h3>Toyota Glanza</h3>
-            <p>Compact</p>
-            <p>Daily Rate: <span class="price">$35</span></p>
-            <p>Status: <span class="status">Available</span></p>
-            <button class="book-btn">Book This Car</button>
-        </div>
-        </div>
-
-        <!-- <h2>MID-SIZE CARS</h2> -->
-        <div class="card-grid">
-           <div class="card" data-type="Mid-size">
-            <img style="height: 150px; width: 250px;" src="../assets/images/MID-SIZE-CARS/1.png" alt="Car">
-            <h3>Maruti Suzuki Dzire</h3>
-            <p>Mid-size</p>
-            <p>Daily Rate: <span class="price">$35</span></p>
-            <p>Status: <span class="status">Available</span></p>
-            <button class="book-btn">Book This Car</button>
-        </div>
-
-        <div class="card" data-type="Mid-size">
-            <img style="height: 150px; width: 250px;" src="../assets/images/MID-SIZE-CARS/2.png" alt="Car">
-            <h3>Honda Amaze</h3>
-            <p>Mid-size</p>
-            <p>Daily Rate: <span class="price">$35</span></p>
-            <p>Status: <span class="status">Available</span></p>
-            <button class="book-btn">Book This Car</button>
-        </div>
-
-        <div class="card" data-type="Mid-size">
-            <img style="height: 150px; width: 250px;" src="../assets/images/MID-SIZE-CARS/3.png" alt="Car">
-            <h3>Hyundai Aura</h3>
-            <p>Mid-size</p>
-            <p>Daily Rate: <span class="price">$35</span></p>
-            <p>Status: <span class="status">Available</span></p>
-            <button class="book-btn">Book This Car</button>
-        </div>
-
-        <div class="card" data-type="Mid-size">
-            <img style="height: 150px; width: 250px;" src="../assets/images/MID-SIZE-CARS/4.png" alt="Car">
-            <h3>Tata Tigor</h3>
-            <p>Mid-size</p>
-            <p>Daily Rate: <span class="price">$35</span></p>
-            <p>Status: <span class="status">Available</span></p>
-            <button class="book-btn">Book This Car</button>
-        </div>
-
-        <div class="card" data-type="Mid-size">
-            <img style="height: 150px; width: 250px;" src="../assets/images/MID-SIZE-CARS/5.png" alt="Car">
-            <h3>Honda Amaze 2nd Gen</h3>
-            <p>Mid-size</p>
-            <p>Daily Rate: <span class="price">$35</span></p>
-            <p>Status: <span class="status">Available</span></p>
-            <button class="book-btn">Book This Car</button>
-        </div>
-
-        <div class="card" data-type="Mid-size">
-            <img style="height: 150px; width: 250px;" src="../assets/images/MID-SIZE-CARS/6.png" alt="Car">
-            <h3>Tata Tigor EV</h3>
-            <p>Mid-size</p>
-            <p>Daily Rate: <span class="price">$35</span></p>
-            <p>Status: <span class="status">Available</span></p>
-            <button class="book-btn">Book This Car</button>
-        </div>
-
-        <div class="card" data-type="Mid-size">
-            <img style="height: 150px; width: 250px;" src="../assets/images/MID-SIZE-CARS/7.png" alt="Car">
-            <h3>Skoda Kylaq</h3>
-            <p>Mid-size</p>
-            <p>Daily Rate: <span class="price">$35</span></p>
-            <p>Status: <span class="status">Available</span></p>
-            <button class="book-btn">Book This Car</button>
-        </div>
-
-        <div class="card" data-type="Mid-size">
-            <img style="height: 150px; width: 250px;" src="../assets/images/MID-SIZE-CARS/8.png" alt="Car">
-            <h3>Mahindra BE 6</h3>
-            <p>Mid-size</p>
-            <p>Daily Rate: <span class="price">$35</span></p>
-            <p>Status: <span class="status">Available</span></p>
-            <button class="book-btn">Book This Car</button>
-        </div>
-
+while ($row = $result->fetch_assoc()) {
+    // Add CSS class if unavailable
+    $statusClass = ($row['status'] === 'Available') ? 'status-available' : 'status-unavailable';
+?>
+    <div class="card <?php echo $statusClass; ?>" data-type="<?php echo htmlspecialchars($row['car_type']); ?>">
+        <img src="../admin/car_images/<?php echo htmlspecialchars($row['image']); ?>" alt="Car Image" style="width:100%; height:150px; object-fit:cover;">
+        <h3><?php echo htmlspecialchars($row['car_name']); ?></h3>
+        <p><?php echo htmlspecialchars($row['car_type']); ?></p>
+        <p>Daily Rate: <span class="price"><?php echo htmlspecialchars($row['daily_rate']); ?></span></p>
+        <p>Status: <span class="status"><?php echo htmlspecialchars($row['status']); ?></span></p>
+        <button class="book-btn">Book This Car</button>
     </div>
+<?php
+}
+?>
+</div>
+
 </div>
 
     <!-- Hero Section End -->

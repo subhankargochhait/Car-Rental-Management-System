@@ -111,7 +111,7 @@ if (!isset($_SESSION["un"])) {
             <li><a href="dashboard.php" class="active">My Dashboard</a></li>
             <li><a href="../pages/browse-car.php" class="active">Browse Cars</a></li>
             <li><a href="../pages/book-rental.php" class="active">Book Rental</a></li>
-            <li><a href="#" class="active">My Rental</a></li>
+            <li><a href="../pages/my_rental.php" class="active">My Rental</a></li>
              <li><a href="../pages/profile.php">Profile</a></li>
              <p style="color: red;">Welcome, <?php echo htmlspecialchars($_SESSION["un"]); ?></p>
         </ul>
