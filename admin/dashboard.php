@@ -213,7 +213,7 @@ if (!isset($_SESSION["un"])) {
                             <span class="icon">💳</span>
                             Payment Status
                         </a>
-                        <a href="reports.php" class="reports">
+                        <a href="rant_cars.php" class="reports">
                             <span class="icon">📊</span>
                             Reports
                         </a>

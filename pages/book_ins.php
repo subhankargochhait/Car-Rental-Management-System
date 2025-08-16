@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+// Redirect if user not logged in
 if (!isset($_SESSION["un"])) {
     header("Location: login.php");
     exit;
@@ -7,67 +9,44 @@ if (!isset($_SESSION["un"])) {
 
 include("../config/db.php");
 
-$username = $_SESSION["un"];
-
-// Get form data
-$car_id       = $_POST['car_id'] ?? '';
+// Get form data safely
+$username     = $_SESSION["un"];
+$car_name     = $_POST['car_name'] ?? '';
+$daily_rate   = isset($_POST['daily_rate']) ? (float)$_POST['daily_rate'] : 0;
 $pickup_date  = $_POST['pickup_date'] ?? '';
 $return_date  = $_POST['return_date'] ?? '';
+$total_amount = isset($_POST['total_amount']) ? (float)$_POST['total_amount'] : 0;
 
-// Validate basic fields
-if (empty($car_id) || empty($pickup_date) || empty($return_date)) {
-    echo "<script>alert('Invalid booking details. Please try again.'); window.history.back();</script>";
-    exit;
+// Validate required fields
+if (empty($car_name) || empty($pickup_date) || empty($return_date)) {
+    die("Please fill in all required fields.");
 }
 
-// Fetch car details from database
-$car_sql = "SELECT car_name, car_type, daily_rate, image, status FROM cars WHERE id = ?";
-$stmt = $con->prepare($car_sql);
-$stmt->bind_param("i", $car_id);
-$stmt->execute();
-$car_result = $stmt->get_result();
+// Prepare SQL statement
+$stmt = $con->prepare("INSERT INTO bookings (username, car_name, daily_rate, pickup_date, return_date, total_amount, booking_date) VALUES (?, ?, ?, ?, ?, ?, NOW())");
 
-if ($car_result->num_rows === 0) {
-    echo "<script>alert('Car not found.'); window.history.back();</script>";
-    exit;
-}
-
-$car = $car_result->fetch_assoc();
-$stmt->close();
-
-// Calculate total amount
-$days = (strtotime($return_date) - strtotime($pickup_date)) / 86400;
-if ($days <= 0) {
-    echo "<script>alert('Return date must be after pickup date.'); window.history.back();</script>";
-    exit;
-}
-$total_amount = $days * $car['daily_rate'];
-
-// Insert booking into bookings table
-$sql = "INSERT INTO bookings (username, car_name, car_type, daily_rate, image, status, pickup_date, return_date, total_amount, booking_date)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
-
-$stmt = $con->prepare($sql);
+// Bind parameters
+// s = string, d = double
 $stmt->bind_param(
-    "sssissssd",
-    $username,
-    $car['car_name'],
-    $car['car_type'],
-    $car['daily_rate'],
-    $car['image'],
-    $car['status'],
-    $pickup_date,
-    $return_date,
-    $total_amount
+    "ssdssd",
+    $username,     // s = string
+    $car_name,     // s = string
+    $daily_rate,   // d = double
+    $pickup_date,  // s = string (DATE)
+    $return_date,  // s = string (DATE)
+    $total_amount  // d = double
 );
 
+// Execute statement
 if ($stmt->execute()) {
+    // Redirect to My Rentals page after successful booking
     header("Location: my_rental.php");
     exit;
 } else {
-    echo "<script>alert('Booking failed. Please try again.'); window.history.back();</script>";
+    echo "Error: " . $stmt->error;
 }
 
+// Close statement and connection
 $stmt->close();
-mysqli_close($con);
+$con->close();
 ?>
