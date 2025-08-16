@@ -170,20 +170,34 @@ $sql = "SELECT image, car_name, car_type, daily_rate, status FROM cars";
 $result = $con->query($sql);
 
 while ($row = $result->fetch_assoc()) {
-    // Add CSS class if unavailable
     $statusClass = ($row['status'] === 'Available') ? 'status-available' : 'status-unavailable';
 ?>
     <div class="card <?php echo $statusClass; ?>" data-type="<?php echo htmlspecialchars($row['car_type']); ?>">
-        <img src="../admin/car_images/<?php echo htmlspecialchars($row['image']); ?>" alt="Car Image" style="width:100%; height:150px; object-fit:cover;">
+        <img src="../admin/car_images/<?php echo htmlspecialchars($row['image']); ?>" 
+             alt="Car Image" 
+             style="width:100%; height:150px; object-fit:cover;">
+        
         <h3><?php echo htmlspecialchars($row['car_name']); ?></h3>
         <p><?php echo htmlspecialchars($row['car_type']); ?></p>
         <p>Daily Rate: <span class="price"><?php echo htmlspecialchars($row['daily_rate']); ?></span></p>
         <p>Status: <span class="status"><?php echo htmlspecialchars($row['status']); ?></span></p>
-        <button class="book-btn">Book This Car</button>
+
+        <?php if ($row['status'] === 'Available') { ?>
+            <button class="book-btn" 
+                onclick="window.location.href='book-rental.php?car_name=<?php echo urlencode($row['car_name']); ?>&car_type=<?php echo urlencode($row['car_type']); ?>&daily_rate=<?php echo $row['daily_rate']; ?>&image=<?php echo urlencode($row['image']); ?>'">
+                Book This Car
+            </button>
+        <?php } else { ?>
+            <button class="book-btn" disabled style="background: #ccc; cursor: not-allowed;">
+                Not Available
+            </button>
+        <?php } ?>
     </div>
 <?php
 }
 ?>
+
+
 </div>
 
 </div>

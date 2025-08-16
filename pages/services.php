@@ -174,7 +174,16 @@ while ($row = $result->fetch_assoc()) {
         <p><?php echo htmlspecialchars($row['car_type']); ?></p>
         <p>Daily Rate: <span class="price"><?php echo htmlspecialchars($row['daily_rate']); ?></span></p>
         <p>Status: <span class="status"><?php echo htmlspecialchars($row['status']); ?></span></p>
-        <button class="book-btn">Book This Car</button>
+       <?php if ($row['status'] === 'Available') { ?>
+            <button class="book-btn" 
+                onclick="window.location.href='signup.php?car_name=<?php echo urlencode($row['car_name']); ?>&car_type=<?php echo urlencode($row['car_type']); ?>&daily_rate=<?php echo $row['daily_rate']; ?>&image=<?php echo urlencode($row['image']); ?>'">
+                Book This Car
+            </button>
+        <?php } else { ?>
+            <button class="book-btn" disabled style="background: #ccc; cursor: not-allowed;">
+                Not Available
+            </button>
+        <?php } ?>
     </div>
 <?php
 }

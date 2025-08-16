@@ -28,7 +28,6 @@
             <li><a href="/Travarsa_Internship/Car-Rental-Management-System/pages/contact_us.php" class="active">Contact Us</a></li>
         </ul>
        </div>
-
        <div class="nav-log">
            <button type="submit" name="login"><a href="/Travarsa_Internship/Car-Rental-Management-System/pages/login.php" class="active" style="color: black;">Login</a></button>
 
@@ -36,7 +35,6 @@
 
                <button id="signup-button"><a href="/Travarsa_Internship/Car-Rental-Management-System/admin/login.php" class="active" style="color: white;">Admin/Login</a></button>
         </div>
-
     </nav>
     <!-- nav-bar-end -->
 
@@ -182,7 +180,7 @@
       <div class="rating">★ 4.8 (2,436 reviews)</div>
       <div class="features">4 Passengers • Auto • Air Conditioning • 4 Doors</div>
       <div class="price">$1,800 /day</div>
-      <button class="rent-btn">Rent Now</button>
+      <a href="./pages/signup.php"><button class="rent-btn">Rent Now</button></a>
     </div>
     <div class="car-card">
       <img src="assets/images/car-2.png" alt="Audi R8">
@@ -190,7 +188,7 @@
       <div class="rating">★ 4.6 (1,936 reviews)</div>
       <div class="features">2 Passengers • Auto • Air Conditioning • 2 Doors</div>
       <div class="price">$2,100 /day</div>
-      <button class="rent-btn">Rent Now</button>
+      <a href="./pages/signup.php"><button class="rent-btn">Rent Now</button></a>
     </div>
     <div class="car-card">
       <img src="assets/images/car-3.png" alt="BMW M3">
@@ -198,7 +196,7 @@
       <div class="rating">★ 4.5 (2,036 reviews)</div>
       <div class="features">4 Passengers • Auto • Air Conditioning • 4 Doors</div>
       <div class="price">$1,600 /day</div>
-      <button class="rent-btn">Rent Now</button>
+      <a href="./pages/signup.php"><button class="rent-btn">Rent Now</button></a>
     </div>
     <div class="car-card">
       <img src="assets/images/car-4.png" alt="Lamborghini">
@@ -206,12 +204,11 @@
       <div class="rating">★ 4.3 (2,236 reviews)</div>
       <div class="features">2 Passengers • Auto • Air Conditioning • 2 Doors</div>
       <div class="price">$2,300 /day</div>
-      <button class="rent-btn">Rent Now</button>
+     <a href="./pages/signup.php"><button class="rent-btn">Rent Now</button></a>
     </div>
   </div>
 
-  <button class="show-btn">Show all vehicles →</button>
-
+<button class="show-btn"><a href="./pages/services.php">Show all vehicles →</a> →</button>
   <!-- Most-populer-section-end -->
 
 <!-- Footer-section-start -->

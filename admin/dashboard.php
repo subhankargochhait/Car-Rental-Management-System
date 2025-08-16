@@ -6,7 +6,6 @@ if (!isset($_SESSION["un"])) {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,95 +14,160 @@ if (!isset($_SESSION["un"])) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Admin Dashboard for Car Rental System">
+    <meta name="author" content="Admin">
 
-    <title>Admin-Dashboard</title>
+    <title>Admin Dashboard</title>
 
-    <!-- Custom fonts for this template-->
+    <!-- Fonts and Icons -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
 
-    <!-- Custom styles for this template-->
+    <!-- Custom CSS -->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
     <style>
-                body{
-            background-color: white;
-             font-family: 'Poppins', sans-serif;
-             font-size: 13px;
+        /* General Body */
+        body {
+            background: linear-gradient(135deg, #f8f9fa, #e2e8f0);
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            overflow-x: hidden;
         }
-    h1 {
-        font-size: 2rem;
-        margin-bottom: 30px;
-        font-weight: bold;
-        color: #222;
-    }
-    .menu {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        max-width: 350px;
-    }
-    .menu a {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 14px 20px;
-        border-radius: 50px;
-        font-size: 1.1rem;
-        font-weight: 500;
-        text-decoration: none;
-        color: white;
-        box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-        transition: all 0.3s ease;
-    }
-    .menu a:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.25);
-    }
-    /* Different button colors */
-    .cars {
-        background: linear-gradient(90deg, #ff7e5f, #feb47b);
-    }
-    .booking {
-        background: linear-gradient(90deg, #6a11cb, #2575fc);
-    }
-    .rentals {
-        background: linear-gradient(90deg, #ff416c, #ff4b2b);
-    }
-         .icon {
-        font-size: 1.3rem;
-        background: rgba(255,255,255,0.15);
-        padding: 8px;
-        border-radius: 50%;
-    }
-         .main-content{
+
+        /* Page Title */
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 30px;
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        /* Menu Container */
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+            animation: fadeIn 1.2s ease forwards;
+        }
+
+        /* Menu Items */
+        .menu a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 25px 20px;
+            border-radius: 20px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #fff;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transition: transform 0.5s ease, box-shadow 0.5s ease, background 0.5s ease;
+        }
+
+        .menu a:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+        }
+
+        .menu a::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 120%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.15);
+            transform: skewX(-25deg);
+            transition: left 0.6s ease;
+        }
+
+        .menu a:hover::before {
+            left: 120%;
+        }
+
+        /* Icons inside menu */
+        .menu a .icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            transition: transform 0.5s ease, color 0.5s ease;
+        }
+
+        .menu a:hover .icon {
+            transform: rotate(20deg) scale(1.3);
+            color: #fff;
+        }
+
+        /* Gradients for Buttons */
+        .cars {
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+        }
+
+        .booking {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+        }
+
+        .rentals {
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+        }
+
+        .reports {
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+        }
+
+        .settings {
+            background: linear-gradient(135deg, #ff9966, #ff5e62);
+        }
+
+        /* Card Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Main Content */
+        .main-content {
             margin-left: 60px;
             margin-bottom: 250px;
             margin-top: 20px;
+            padding: 0 15px;
         }
-        .section-1{
-            display: flex;
-            height: 40px;
-            width: 400px;
-            margin-top: 20px;
-            background-color: rgb(12, 128, 217);
-            background: linear-gradient(to bottom, #ff7e5f, #feb47b);
-            font-family: Arial, sans-serif;
-            font-size: 20px;
-            justify-content: center;
-            align-items: center;
-            align-content: center;
-            border-radius: 20px;
-            text-decoration: none;
-            color: black;
 
+        /* Hover Shadow Animation for Body */
+        body:hover {
+            transition: background 1.5s ease;
+            background: linear-gradient(135deg, #e0f7fa, #ffe0b2);
+        }
+
+        /* Footer text */
+        footer {
+            font-size: 0.9rem;
+            color: #6c757d;
         }
     </style>
-
 </head>
 
 <body id="page-top">
@@ -112,7 +176,7 @@ if (!isset($_SESSION["un"])) {
     <div id="wrapper">
 
         <!-- Sidebar -->
-       <?php include("admin_inc/sidebar.php") ?>
+        <?php include("admin_inc/sidebar.php") ?>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -122,43 +186,51 @@ if (!isset($_SESSION["un"])) {
             <div id="content">
 
                 <!-- Topbar -->
-       <?php include("admin_inc/top.php") ?>
-               
+                <?php include("admin_inc/top.php") ?>
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Hii, <?php echo htmlspecialchars($_SESSION["un"]); ?></h1>
-                    
-                     <!-- Hero Section Start -->
-         <h1 style="margin-left: 60px;"></h1>
-    
-     <div class="menu main-content">
-    <a href="add_cars.php" class="cars">
-        <span class="icon">🚗</span>Add Car
-    </a>
-    <a href="list_cars.php" class="booking">
-        <span class="icon">✅</span>List Cars
-    </a>
-    <a href="all_users.php" class="rentals">
-        <span class="icon">📄</span>All User's
-    </a>
+                    <h1>Welcome, <?php echo htmlspecialchars($_SESSION["un"]); ?>!</h1>
 
-    <a href="pay.php" class="booking">
-        <span class="icon">✅</span>Payment Status Update
-    </a>
-</div>
-    <!-- Hero Section End -->
+                    <!-- Menu Cards -->
+                    <div class="menu main-content">
+                        <a href="add_cars.php" class="cars">
+                            <span class="icon">🚗</span>
+                            Add Car
+                        </a>
+                        <a href="list_cars.php" class="booking">
+                            <span class="icon">✅</span>
+                            List Cars
+                        </a>
+                        <a href="all_users.php" class="rentals">
+                            <span class="icon">📄</span>
+                            All Users
+                        </a>
+                        <a href="pay.php" class="booking">
+                            <span class="icon">💳</span>
+                            Payment Status
+                        </a>
+                        <a href="reports.php" class="reports">
+                            <span class="icon">📊</span>
+                            Reports
+                        </a>
+                        <a href="settings.php" class="settings">
+                            <span class="icon">⚙️</span>
+                            Settings
+                        </a>
+                    </div>
+
+                </div>
                 <!-- /.container-fluid -->
 
             </div>
             <!-- End of Main Content -->
 
             <!-- Footer -->
-       <?php include("admin_inc/footer.php") ?>
-           
+            <?php include("admin_inc/footer.php") ?>
             <!-- End of Footer -->
 
         </div>
@@ -173,8 +245,7 @@ if (!isset($_SESSION["un"])) {
     </a>
 
     <!-- Logout Modal-->
-       <?php include("admin_inc/logout_modal.php") ?>
-    
+    <?php include("admin_inc/logout_modal.php") ?>
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>

@@ -15,7 +15,7 @@ $result = $con->query($sql);
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
 } else {
-    die("Student not found.");
+    die("User not found.");
 }
 
 // Step 3: Update data when form is submitted
@@ -31,101 +31,129 @@ if (isset($_POST['update'])) {
                    WHERE uid='$uid'";
 
     if ($con->query($update_sql) === TRUE) {
-        echo "<script>alert('Student updated successfully!'); window.location='all_users.php';</script>";
+        echo "<script>alert('User updated successfully!'); window.location='all_users.php';</script>";
     } else {
         echo "Error updating record: " . $con->error;
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
     <title>Update User Data</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: #f2f2f2;
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            margin: 0;
+            padding: 0;
+        }
+        .form-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
             padding: 20px;
         }
         .form-container {
             background: white;
-            max-width: 400px;
-            margin: auto;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 450px;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-15px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         h2 {
             text-align: center;
-            color: #333;
+            margin-bottom: 20px;
+            color: #1565c0;
+            font-weight: 600;
         }
         label {
-            font-weight: bold;
+            font-weight: 500;
+            margin-top: 12px;
             display: block;
-            margin-top: 10px;
+            color: #333;
         }
         input[type="text"], input[type="email"] {
             width: 100%;
-            padding: 8px;
-            margin-top: 5px;
+            padding: 10px;
+            margin-top: 6px;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+        input:focus {
+            border-color: #1565c0;
+            box-shadow: 0 0 5px rgba(21, 101, 192, 0.3);
+            outline: none;
         }
         button {
-            background-color: #28a745;
+            background-color: #1565c0;
             color: white;
-            padding: 10px;
-            margin-top: 15px;
+            padding: 12px;
+            margin-top: 18px;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
             width: 100%;
+            font-size: 16px;
+            transition: 0.3s;
         }
         button:hover {
-            background-color: #218838;
+            background-color: #0d47a1;
         }
         .back-btn {
             text-align: center;
-            margin-top: 10px;
+            margin-top: 12px;
         }
         .back-btn a {
             text-decoration: none;
             color: white;
-            background: #007BFF;
-            padding: 8px 15px;
-            border-radius: 5px;
+            background: #43a047;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: 0.3s;
         }
         .back-btn a:hover {
-            background: #0056b3;
+            background: #2e7d32;
         }
     </style>
 </head>
 <body>
 
-<div class="form-container">
-    <h2>Update User Data</h2>
-    <form action="" method="POST">
-        <label>Full Name</label>
-        <input type="text" name="full_name" value="<?php echo $row['full_name']; ?>" required>
+<div class="form-wrapper">
+    <div class="form-container">
+        <h2>Update User</h2>
+        <form method="POST">
+            <label>Full Name</label>
+            <input type="text" name="full_name" value="<?php echo htmlspecialchars($row['full_name']); ?>" required>
 
-        <label>Email</label>
-        <input type="email" name="email" value="<?php echo $row['email']; ?>" required>
+            <label>Email</label>
+            <input type="email" name="email" value="<?php echo htmlspecialchars($row['email']); ?>" required>
 
-        <label>Phone</label>
-        <input type="text" name="phone" value="<?php echo $row['phone']; ?>" required>
+            <label>Phone</label>
+            <input type="text" name="phone" value="<?php echo htmlspecialchars($row['phone']); ?>" required>
 
-        <label>Driver's License</label>
-        <input type="text" name="driver_license" value="<?php echo $row['driver_license']; ?>" required>
+            <label>Driver's License</label>
+            <input type="text" name="driver_license" value="<?php echo htmlspecialchars($row['driver_license']); ?>" required>
 
-        <label>Address</label>
-        <input type="text" name="address" value="<?php echo $row['address']; ?>" required>
+            <label>Address</label>
+            <input type="text" name="address" value="<?php echo htmlspecialchars($row['address']); ?>" required>
 
-        <button type="submit" name="update">Update</button>
-    </form>
+            <button type="submit" name="update">Update</button>
+        </form>
 
-    <div class="back-btn">
-        <a href="all_users.php">⬅ Go Back</a>
+        <div class="back-btn">
+            <a href="all_users.php">⬅ Go Back</a>
+        </div>
     </div>
 </div>
 
