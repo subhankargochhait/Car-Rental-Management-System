@@ -10,218 +10,109 @@ if (!isset($_SESSION["un"])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services-page</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
-<!-- <link rel="stylesheet" href="../assets/css/admin.css"> -->
- <link rel="stylesheet" href="../assets/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Lexend', sans-serif;
+    }
+  </style>
 </head>
-<body>
-    <style>
-        body{
-            background-color: white;
-        }
-    .btn-logout,a{
-    padding: 5px 10px;
-    border-radius: 5px;
-        }
+<body class="bg-gray-50">
 
-         .container {
-        max-width: 1100px;
-        margin: auto;
-        background: #fff;
-        padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    }
+  <!-- Navbar -->
+  <?php include('../includes/navbar-user.php'); ?>
 
-    h2 {
-        font-size: 28px;
-        margin-bottom: 20px;
-    }
+  <!-- Hero Section -->
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <h2 class="text-3xl font-bold text-gray-800 mb-6">🚗 Available Cars</h2>
 
-    .filters {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 20px;
-        flex-wrap: wrap;
-    }
-
-    select, input {
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        font-size: 14px;
-    }
-
-    .btn {
-        padding: 10px 16px;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 14px;
-        font-weight: bold;
-    }
-
-    .btn-primary {
-        background: #2563eb;
-        color: white;
-    }
-
-    .btn-secondary {
-        background: #d1d5db;
-        color: #333;
-    }
-
-    .card-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-    }
-
-    .card {
-        background: white;
-        padding: 20px;
-        border-radius: 12px;
-        text-align: center;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    }
-
-    .card img {
-        width: 80px;
-        margin-bottom: 10px;
-    }
-
-    .card h3 {
-        font-size: 20px;
-        margin: 10px 0 5px;
-    }
-
-    .card p {
-        color: #555;
-        margin: 0 0 10px;
-    }
-
-    .price {
-        font-weight: bold;
-        color: #2563eb;
-    }
-
-    .status {
-        display: inline-block;
-        padding: 4px 10px;
-        background: #d1fae5;
-        color: #065f46;
-        border-radius: 20px;
-        font-size: 12px;
-        margin-left: 5px;
-    }
-
-    .book-btn {
-        display: block;
-        width: 100%;
-        padding: 12px;
-        background: linear-gradient(to right, #4f46e5, #3b82f6);
-        color: white;
-        border: none;
-        border-radius: 8px;
-        font-weight: bold;
-        cursor: pointer;
-        margin-top: 10px;
-    }
-.status-unavailable {
-    background-color: #ffe5e5; /* light red */
-    border: 1px solid #ff4d4d;
-}
-.status-unavailable .status {
-    background: #ff4d4d;
-    color: white;
-}
-
-    </style>
-  <!-- nav-bar-start -->
-<?php include('../includes/navbar-user.php') ?>
-   
-    <!-- nav-bar-end -->
-
-    <!-- Hero Section Start -->
-    
-    <div class="container">
-    <h2>Available Cars</h2>
-    
-    <div class="filters">
-        <select id="carFilter">
-    <option value="All">All Types</option>
-    <option value="SUV">SUV</option>
-    <option value="Compact">Compact</option>
-    <option value="Mid-size">Mid-size</option>
-</select>
-        <input type="text" placeholder="Max Price/Day">
-        <button class="btn btn-primary">Apply Filters</button>
-        <button class="btn btn-secondary">Clear</button>
+    <!-- Filters -->
+    <div class="flex flex-wrap gap-3 mb-8">
+      <select id="carFilter" class="px-4 py-2 border rounded-lg focus:ring focus:ring-indigo-300">
+        <option value="All">All Types</option>
+        <option value="SUV">SUV</option>
+        <option value="Compact">Compact</option>
+        <option value="Mid-size">Mid-size</option>
+      </select>
+      <input type="text" placeholder="Max Price/Day" class="px-4 py-2 border rounded-lg focus:ring focus:ring-indigo-300">
+      <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition">Apply Filters</button>
+      <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300 transition">Clear</button>
     </div>
 
-    <div class="card-grid">
-<?php
-$sql = "SELECT image, car_name, car_type, daily_rate, status FROM cars";
-$result = $con->query($sql);
+    <!-- Cars Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <?php
+      $sql = "SELECT image, car_name, car_type, daily_rate, status FROM cars";
+      $result = $con->query($sql);
 
-while ($row = $result->fetch_assoc()) {
-    $statusClass = ($row['status'] === 'Available') ? 'status-available' : 'status-unavailable';
-?>
-    <div class="card <?php echo $statusClass; ?>" data-type="<?php echo htmlspecialchars($row['car_type']); ?>">
-        <img src="../admin/car_images/<?php echo htmlspecialchars($row['image']); ?>" 
-             alt="Car Image" 
-             style="width:100%; height:150px; object-fit:cover;">
-        
-        <h3><?php echo htmlspecialchars($row['car_name']); ?></h3>
-        <p><?php echo htmlspecialchars($row['car_type']); ?></p>
-        <p>Daily Rate: <span class="price"><?php echo htmlspecialchars($row['daily_rate']); ?></span></p>
-        <p>Status: <span class="status"><?php echo htmlspecialchars($row['status']); ?></span></p>
+      while ($row = $result->fetch_assoc()) {
+          $statusAvailable = ($row['status'] === 'Available');
+      ?>
+      <div class="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transition border"
+           data-type="<?php echo htmlspecialchars($row['car_type']); ?>">
 
-        <?php if ($row['status'] === 'Available') { ?>
-            <button class="book-btn" 
-                onclick="window.location.href='book-rental.php?car_name=<?php echo urlencode($row['car_name']); ?>&car_type=<?php echo urlencode($row['car_type']); ?>&daily_rate=<?php echo $row['daily_rate']; ?>&image=<?php echo urlencode($row['image']); ?>'">
-                Book This Car
+        <img src="../admin/car_images/<?php echo htmlspecialchars($row['image']); ?>"
+             alt="Car Image"
+             class="w-full h-48 object-cover">
+
+        <div class="p-5">
+          <h3 class="text-xl font-semibold text-gray-800">
+            <?php echo htmlspecialchars($row['car_name']); ?>
+          </h3>
+          <p class="text-gray-500"><?php echo htmlspecialchars($row['car_type']); ?></p>
+          <p class="mt-2 text-lg font-bold text-indigo-600">
+            ₹<?php echo htmlspecialchars($row['daily_rate']); ?>/day
+          </p>
+
+          <p class="mt-2">
+            Status:
+            <span class="px-3 py-1 text-sm rounded-full 
+              <?php echo $statusAvailable ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-600'; ?>">
+              <?php echo htmlspecialchars($row['status']); ?>
+            </span>
+          </p>
+
+          <?php if ($statusAvailable) { ?>
+            <button 
+              onclick="window.location.href='book-rental.php?car_name=<?php echo urlencode($row['car_name']); ?>&car_type=<?php echo urlencode($row['car_type']); ?>&daily_rate=<?php echo $row['daily_rate']; ?>&image=<?php echo urlencode($row['image']); ?>'" 
+              class="mt-4 w-full bg-gradient-to-r from-indigo-600 to-blue-500 text-white font-semibold py-2 rounded-lg hover:opacity-90 transition">
+              Book This Car
             </button>
-        <?php } else { ?>
-            <button class="book-btn" disabled style="background: #ccc; cursor: not-allowed;">
-                Not Available
+          <?php } else { ?>
+            <button disabled class="mt-4 w-full bg-gray-300 text-gray-600 font-semibold py-2 rounded-lg cursor-not-allowed">
+              Not Available
             </button>
-        <?php } ?>
+          <?php } ?>
+        </div>
+      </div>
+      <?php } ?>
     </div>
-<?php
-}
-?>
+  </div>
 
+  <!-- Footer -->
+  <?php include('../includes/footer.php'); ?>
 
-</div>
+  <script>
+    document.getElementById('carFilter').addEventListener('change', function () {
+      let selectedType = this.value;
+      let cars = document.querySelectorAll('.grid .bg-white');
 
-</div>
-
-    <!-- Hero Section End -->
-
-          <!-- Footer-section-start -->
-<?php include('../includes/footer.php'); ?>
-
-<script>
-document.getElementById('carFilter').addEventListener('change', function () {
-    let selectedType = this.value;
-    let cars = document.querySelectorAll('.card');
-
-    cars.forEach(card => {
+      cars.forEach(card => {
         let carType = card.getAttribute('data-type');
         if (selectedType === "All" || carType === selectedType) {
-            card.style.display = "block";
+          card.style.display = "block";
         } else {
-            card.style.display = "none";
+          card.style.display = "none";
         }
+      });
     });
-});
-</script>
+  </script>
 
 </body>
 </html>

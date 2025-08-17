@@ -19,7 +19,7 @@ if (isset($_POST["login"])) {
         $_SESSION["ph"] = $row["phone"];
         $_SESSION["dl"] = $row["driver_license"];
         $_SESSION["add"] = $row["address"];
-        header("Location:dashboard.php");
+        header("Location: dashboard.php");
         exit;
     } else {
         $error = "Invalid email or password!";
@@ -32,36 +32,41 @@ if (isset($_POST["login"])) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Car Rental | Login</title>
-  <link rel="stylesheet" href="../assets/css/styles-login.css" />
-  <style>
-    .error-msg {
-      background: #ffdddd;
-      color: #d8000c;
-      padding: 10px;
-      border-radius: 5px;
-      margin-bottom: 15px;
-      text-align: center;
-      font-size: 14px;
-    }
-  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@tailwindcss/forms"></script>
 </head>
-<body>
-  <div class="overlay">
-    <div class="form-container">
-      <h2 id="formTitle">Login</h2>
+<body class="bg-gradient-to-r from-blue-100 to-blue-200 flex items-center justify-center min-h-screen">
 
-      <!-- Show error if login failed -->
-      <?php if (!empty($error)): ?>
-        <div class="error-msg"><?php echo $error; ?></div>
-      <?php endif; ?>
+  <!-- Login Card -->
+  <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md relative">
+    <h2 class="text-2xl font-bold text-gray-800 text-center mb-6">🚗 Car Rental Login</h2>
 
-      <!-- Login Form -->
-      <form id="loginForm" class="form active" action="" method="post">
-        <input type="email" name="email" placeholder="Email" required />
-        <input type="password" name="password" placeholder="Password" required />
-        <button type="submit" name="login">Login</button>
-      </form>
-    </div>
+    <!-- Login Form -->
+    <form action="" method="post" class="space-y-4">
+      <input type="email" name="email" placeholder="Email" 
+        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" required />
+      
+      <input type="password" name="password" placeholder="Password"
+        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" required />
+      
+      <button type="submit" name="login" 
+        class="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition">
+        Login
+      </button>
+    </form>
   </div>
+
+  <!-- Popup for Invalid Credentials -->
+  <?php if (!empty($error)): ?>
+    <div id="popup" class="fixed top-5 right-5 bg-red-600 text-white px-6 py-3 rounded-lg shadow-lg animate-bounce">
+      ❌ <?php echo $error; ?>
+    </div>
+    <script>
+      setTimeout(() => {
+        document.getElementById("popup").style.display = "none";
+      }, 3000); // auto hide in 3s
+    </script>
+  <?php endif; ?>
+
 </body>
 </html>

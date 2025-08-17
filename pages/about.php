@@ -1,200 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
-    <link rel="stylesheet" href="../assets/css/style-about.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | DriveEasy Car Rentals</title>
+  <link rel="stylesheet" href="../assets/css/style-about.css"> 
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Smooth fade-in animation */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-in-out;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Hover card effect */
+    .hover-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .hover-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 25px rgba(0,0,0,0.15);
+    }
+  </style>
 </head>
-<body>
- <?php include('../includes/navbar.php'); ?>
+<body class="bg-gray-50 text-gray-800">
 
-    <!-- Header Section -->
-    <div class="hero">
-        <div class="container">
-            <h1>About DriveEasy Car Rentals</h1>
-            <p>Your trusted partner for reliable, affordable, and convenient car rental services. Making every journey comfortable and memorable since 2010.</p>
-        </div>
+  <!-- Navbar -->
+  <?php include('../includes/navbar.php'); ?>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-24 text-center">
+    <div class="container mx-auto px-6">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">About DriveEasy Car Rentals</h1>
+      <p class="max-w-2xl mx-auto text-lg opacity-90">
+        Reliable, affordable, and convenient car rental services since 2010.  
+        Making every journey smooth, comfortable, and memorable.
+      </p>
     </div>
+  </section>
 
-    <!-- Main Content -->
-    <div class="container">
-        <!-- Mission & Vision -->
-        <div class="section">
-            <div class="grid grid-2">
-                <div class="card">
-                    <div class="card-icon icon-blue">🎯</div>
-                    <h2>Our Mission</h2>
-                    <p>To provide exceptional car rental experiences by offering reliable vehicles, outstanding customer service, and competitive prices that make travel accessible and enjoyable for everyone.</p>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon icon-green">🌟</div>
-                    <h2>Our Vision</h2>
-                    <p>To be the leading car rental service known for innovation, sustainability, and customer satisfaction, connecting people to their destinations with comfort and confidence.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Company Story -->
-        <div class="story">
-            <h2 class="section-title">Our Story</h2>
-            <p>Founded in 2010 with just 5 vehicles and a dream to revolutionize car rentals, DriveEasy has grown into a trusted name in the industry. What started as a small family business has expanded to serve thousands of customers across multiple locations.</p>
-            <p>Today, we operate a modern fleet of over 500 vehicles, from economy cars to luxury SUVs, all maintained to the highest standards. Our commitment to quality service and customer satisfaction has made us the preferred choice for both business and leisure travelers.</p>
-        </div>
-
-        <!-- Why Choose Us -->
-        <div class="section">
-            <h2 class="section-title">Why Choose DriveEasy?</h2>
-            <div class="grid grid-3">
-                <div class="feature">
-                    <div class="feature-icon icon-green">✅</div>
-                    <h3>Quality Vehicles</h3>
-                    <p>Well-maintained, clean, and reliable cars from top manufacturers, regularly serviced and inspected for your safety.</p>
-                </div>
-
-                <div class="feature">
-                    <div class="feature-icon icon-blue">💰</div>
-                    <h3>Competitive Prices</h3>
-                    <p>Transparent pricing with no hidden fees. Get the best value for your money with our affordable rental rates.</p>
-                </div>
-
-                <div class="feature">
-                    <div class="feature-icon icon-orange">🕒</div>
-                    <h3>24/7 Support</h3>
-                    <p>Round-the-clock customer service and roadside assistance to ensure you're never stranded during your journey.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Our Fleet -->
-        <div class="section">
-            <h2 class="section-title">Our Fleet</h2>
-            <div class="grid grid-4">
-                <div class="fleet-item">
-                    <div class="fleet-icon">🚗</div>
-                    <h3>Economy Cars</h3>
-                    <p>Fuel-efficient and budget-friendly options perfect for city driving and short trips.</p>
-                </div>
-
-                <div class="fleet-item">
-                    <div class="fleet-icon">🚙</div>
-                    <h3>SUVs</h3>
-                    <p>Spacious and comfortable vehicles ideal for family trips and group travel.</p>
-                </div>
-
-                <div class="fleet-item">
-                    <div class="fleet-icon">🏎️</div>
-                    <h3>Luxury Cars</h3>
-                    <p>Premium vehicles for special occasions and business travel with style and comfort.</p>
-                </div>
-
-                <div class="fleet-item">
-                    <div class="fleet-icon">🚐</div>
-                    <h3>Vans</h3>
-                    <p>Large capacity vehicles perfect for moving, group events, and cargo transportation.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Our Values -->
-        <div class="values">
-            <h2 class="section-title">Our Values</h2>
-            <div class="grid grid-2">
-                <div>
-                    <div class="value-item">
-                        <div class="value-icon icon-red">🤝</div>
-                        <div class="value-content">
-                            <h3>Customer First</h3>
-                            <p>Every decision we make is centered around providing the best possible experience for our customers.</p>
-                        </div>
-                    </div>
-
-                    <div class="value-item">
-                        <div class="value-icon icon-blue">🔒</div>
-                        <div class="value-content">
-                            <h3>Safety & Reliability</h3>
-                            <p>We maintain the highest safety standards and ensure every vehicle is thoroughly inspected and road-ready.</p>
-                        </div>
-                    </div>
-
-                    <div class="value-item">
-                        <div class="value-icon icon-green">🌱</div>
-                        <div class="value-content">
-                            <h3>Environmental Responsibility</h3>
-                            <p>We're committed to reducing our carbon footprint with fuel-efficient vehicles and eco-friendly practices.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="value-item">
-                        <div class="value-icon icon-yellow">💡</div>
-                        <div class="value-content">
-                            <h3>Innovation</h3>
-                            <p>We continuously improve our services with the latest technology and industry best practices.</p>
-                        </div>
-                    </div>
-
-                    <div class="value-item">
-                        <div class="value-icon icon-purple">⭐</div>
-                        <div class="value-content">
-                            <h3>Excellence</h3>
-                            <p>We strive for excellence in every aspect of our service, from vehicle quality to customer support.</p>
-                        </div>
-                    </div>
-
-                    <div class="value-item">
-                        <div class="value-icon icon-orange">🏆</div>
-                        <div class="value-content">
-                            <h3>Integrity</h3>
-                            <p>We conduct business with honesty, transparency, and respect for all our customers and partners.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Stats Section -->
-        <div class="section">
-            <div class="stats">
-                <h2 class="section-title" style="color: white; margin-bottom: 3rem;">Our Achievements</h2>
-                <div class="grid grid-4">
-                    <div class="stat">
-                        <div class="stat-number">50K+</div>
-                        <div class="stat-label">Happy Customers</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">500+</div>
-                        <div class="stat-label">Vehicles in Fleet</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">15+</div>
-                        <div class="stat-label">Locations</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">99%</div>
-                        <div class="stat-label">Customer Satisfaction</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Contact CTA -->
-        <div class="cta">
-            <h2>Ready to Hit the Road?</h2>
-            <p>Experience the DriveEasy difference today. Book your perfect vehicle and enjoy a smooth, hassle-free rental experience with exceptional customer service.</p>
-            <div class="button-group">
-                <button class="btn btn-primary">Book Now</button>
-                <button class="btn btn-secondary">View Fleet</button>
-            </div>
-        </div>
+  <!-- Mission & Vision -->
+  <section class="py-16 container mx-auto px-6 grid md:grid-cols-2 gap-8">
+    <div class="p-8 bg-white rounded-2xl shadow hover-card fade-up">
+      <div class="text-4xl mb-3">🎯</div>
+      <h2 class="text-2xl font-semibold mb-2">Our Mission</h2>
+      <p>To provide exceptional car rental experiences with reliable vehicles, great customer service, and competitive prices for everyone.</p>
     </div>
+    <div class="p-8 bg-white rounded-2xl shadow hover-card fade-up">
+      <div class="text-4xl mb-3">🌟</div>
+      <h2 class="text-2xl font-semibold mb-2">Our Vision</h2>
+      <p>To be the leading car rental service known for innovation, sustainability, and trust—connecting people to their destinations with ease.</p>
+    </div>
+  </section>
 
-  <!-- Footer-section-start -->
-<?php include('../includes/footer.php'); ?>
+  <!-- Story -->
+  <section class="py-16 bg-gray-100">
+    <div class="container mx-auto px-6 text-center fade-up">
+      <h2 class="text-3xl font-bold mb-6">Our Story</h2>
+      <p class="max-w-3xl mx-auto mb-4">Founded in 2010 with just 5 cars and a dream, DriveEasy has grown into a trusted car rental company serving thousands across 15+ locations. From humble beginnings, we now manage a modern fleet of 500+ vehicles for all kinds of travelers.</p>
+      <p class="max-w-3xl mx-auto">Our promise is simple: quality cars, transparent pricing, and top-notch service that make us the preferred choice for business and leisure alike.</p>
+    </div>
+  </section>
 
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96be2dc4330d3d48',t:'MTc1NDY0NzM1My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+  <!-- Why Choose Us -->
+  <section class="py-16 container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-10">Why Choose DriveEasy?</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="p-6 bg-white rounded-2xl shadow hover-card fade-up">
+        <div class="text-3xl mb-3">✅</div>
+        <h3 class="text-xl font-semibold">Quality Vehicles</h3>
+        <p>Regularly serviced and reliable cars for safe, smooth journeys.</p>
+      </div>
+      <div class="p-6 bg-white rounded-2xl shadow hover-card fade-up">
+        <div class="text-3xl mb-3">💰</div>
+        <h3 class="text-xl font-semibold">Affordable Pricing</h3>
+        <p>Transparent pricing with no hidden charges. Best value guaranteed.</p>
+      </div>
+      <div class="p-6 bg-white rounded-2xl shadow hover-card fade-up">
+        <div class="text-3xl mb-3">🕒</div>
+        <h3 class="text-xl font-semibold">24/7 Support</h3>
+        <p>Round-the-clock customer assistance and roadside help.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="py-16 bg-gradient-to-r from-indigo-600 to-blue-600 text-white">
+    <div class="container mx-auto px-6 grid md:grid-cols-4 gap-8 text-center">
+      <div class="fade-up">
+        <h3 class="text-4xl font-bold">50K+</h3>
+        <p>Happy Customers</p>
+      </div>
+      <div class="fade-up">
+        <h3 class="text-4xl font-bold">500+</h3>
+        <p>Vehicles in Fleet</p>
+      </div>
+      <div class="fade-up">
+        <h3 class="text-4xl font-bold">15+</h3>
+        <p>Locations</p>
+      </div>
+      <div class="fade-up">
+        <h3 class="text-4xl font-bold">99%</h3>
+        <p>Satisfaction Rate</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-20 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-4 fade-up">Ready to Hit the Road?</h2>
+    <p class="max-w-2xl mx-auto mb-8 fade-up">Book your perfect ride today and experience hassle-free car rentals with unmatched service quality.</p>
+    <div class="space-x-4 fade-up">
+      <a href="#" class="px-6 py-3 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700">Book Now</a>
+      <a href="#" class="px-6 py-3 bg-gray-200 text-gray-800 rounded-lg shadow hover:bg-gray-300">View Fleet</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <?php include('../includes/footer.php'); ?>
+
+  <script>
+    // Scroll animation
+    const elements = document.querySelectorAll(".fade-up");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    }, { threshold: 0.2 });
+    elements.forEach(el => observer.observe(el));
+  </script>
+
+</body>
 </html>
