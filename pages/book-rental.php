@@ -11,7 +11,7 @@ $car_name   = $_GET['car_name'] ?? '';
 $car_type   = $_GET['car_type'] ?? '';
 $daily_rate = $_GET['daily_rate'] ?? '';
 $image      = $_GET['image'] ?? '';
-$status     = $_GET['status'] ?? 'Available'; // Default value
+$status     = $_GET['status'] ?? 'Available';
 
 mysqli_close($con);
 ?>
@@ -32,15 +32,12 @@ mysqli_close($con);
   <div class="flex-1 flex items-center justify-center py-12">
     <div class="w-full max-w-lg bg-white rounded-2xl shadow-lg p-8">
       
-      <!-- Title -->
       <h2 class="text-2xl font-bold text-slate-800 text-center mb-6">Book Your Car</h2>
 
-      <!-- Car Image -->
       <img src="../admin/car_images/<?php echo htmlspecialchars($image); ?>" 
            alt="Car Image" 
            class="w-3/4 h-52 object-cover rounded-xl mx-auto mb-6 shadow">
 
-      <!-- Car Info -->
       <div class="bg-slate-50 rounded-xl p-5 mb-6 border border-slate-200">
         <p class="text-slate-700 mb-2"><span class="font-semibold">Car Name:</span> <?php echo htmlspecialchars($car_name); ?></p>
         <p class="text-slate-700 mb-2"><span class="font-semibold">Car Type:</span> <?php echo htmlspecialchars($car_type); ?></p>
@@ -59,18 +56,28 @@ mysqli_close($con);
         <input type="hidden" name="daily_rate" value="<?php echo htmlspecialchars($daily_rate); ?>">
         <input type="hidden" id="totalAmountInput" name="total_amount" value="0">
 
-        <!-- Pickup -->
         <div>
           <label class="block font-medium text-slate-700 mb-1">Pickup Date:</label>
           <input type="date" id="pickupDate" name="pickup_date" required 
                  class="w-full border border-slate-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none">
         </div>
 
-        <!-- Return -->
         <div>
           <label class="block font-medium text-slate-700 mb-1">Return Date:</label>
           <input type="date" id="returnDate" name="return_date" required 
                  class="w-full border border-slate-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none">
+        </div>
+
+        <!-- Payment Method -->
+        <div>
+          <label class="block font-medium text-slate-700 mb-1">Payment Method:</label>
+          <select name="payment_method" required 
+                  class="w-full border border-slate-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none">
+            <option value="">-- Select Payment Method --</option>
+            <option value="Cash on Delivery">Cash on Delivery</option>
+            <option value="Bank Transfer">Bank Transfer</option>
+            <option value="Card Payment">Card Payment</option>
+          </select>
         </div>
 
         <!-- Total -->

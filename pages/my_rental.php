@@ -46,7 +46,8 @@ $result = $con->query("SELECT * FROM bookings WHERE username='$username' ORDER B
                                 </h3>
                                 <p class="text-gray-600 text-sm mb-2"><strong>Pickup Date:</strong> <?php echo htmlspecialchars($row['pickup_date']); ?></p>
                                 <p class="text-gray-600 text-sm mb-2"><strong>Return Date:</strong> <?php echo htmlspecialchars($row['return_date']); ?></p>
-                                <p class="text-gray-700 font-medium text-base"><strong>Total Amount:</strong> ₹<?php echo htmlspecialchars($row['total_amount']); ?></p>
+                                <p class="text-gray-700 font-medium text-base mb-2"><strong>Total Amount:</strong> ₹<?php echo htmlspecialchars($row['total_amount']); ?></p>
+                                <p class="text-gray-600 text-sm mb-2"><strong>Payment Method:</strong> <?php echo htmlspecialchars($row['payment_method']); ?></p>
                             </div>
 
                             <div class="mt-4 flex items-center justify-between">

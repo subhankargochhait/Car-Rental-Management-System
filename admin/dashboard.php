@@ -217,7 +217,7 @@ if (!isset($_SESSION["un"])) {
                             <span class="icon">📊</span>
                             Reports
                         </a>
-                        <a href="settings.php" class="settings">
+                        <a href="setting.php" class="settings">
                             <span class="icon">⚙️</span>
                             Settings
                         </a>

@@ -7,13 +7,14 @@ if (!isset($_SESSION["un"])) {
 
 include("../config/db.php");
 
-$username     = $_SESSION["un"];
-$car_name     = $_POST['car_name'] ?? '';
-$daily_rate   = isset($_POST['daily_rate']) ? (float)$_POST['daily_rate'] : 0;
-$pickup_date  = $_POST['pickup_date'] ?? '';
-$return_date  = $_POST['return_date'] ?? '';
-$total_amount = isset($_POST['total_amount']) ? (float)$_POST['total_amount'] : 0;
-$status       = 'Pending';
+$username       = $_SESSION["un"];
+$car_name       = $_POST['car_name'] ?? '';
+$daily_rate     = isset($_POST['daily_rate']) ? (float)$_POST['daily_rate'] : 0;
+$pickup_date    = $_POST['pickup_date'] ?? '';
+$return_date    = $_POST['return_date'] ?? '';
+$total_amount   = isset($_POST['total_amount']) ? (float)$_POST['total_amount'] : 0;
+$payment_method = $_POST['payment_method'] ?? 'Cash on Delivery'; // default
+$status         = 'Pending';
 
 // 🔹 Validate dates before inserting
 if (!empty($pickup_date) && !empty($return_date)) {
@@ -35,22 +36,23 @@ if ($carRow = $carResult->fetch_assoc()) {
 }
 $carQuery->close();
 
-// ✅ Insert booking
+// ✅ Insert booking with payment_method
 $stmt = $con->prepare("INSERT INTO bookings 
-    (username, car_name, car_type, daily_rate, pickup_date, return_date, total_amount, status, image, booking_date) 
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())");
+    (username, car_name, car_type, daily_rate, pickup_date, return_date, total_amount, payment_method, status, image, booking_date) 
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())");
 
 $stmt->bind_param(
-    "sssdsssss",  // FIXED binding string
-    $username,    // s
-    $car_name,    // s
-    $car_type,    // s
-    $daily_rate,  // d
-    $pickup_date, // s
-    $return_date, // s
-    $total_amount,// d
-    $status,      // s
-    $image        // s
+    "sssdssdsss",  // types
+    $username,       // s
+    $car_name,       // s
+    $car_type,       // s
+    $daily_rate,     // d
+    $pickup_date,    // s
+    $return_date,    // s
+    $total_amount,   // d
+    $payment_method, // s
+    $status,         // s
+    $image           // s
 );
 
 if ($stmt->execute()) {
