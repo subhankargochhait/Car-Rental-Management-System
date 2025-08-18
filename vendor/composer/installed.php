@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'name' => '__root__',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '238ef2ddeb0bcf2233c467fd4bef54be7d2cf67c',
+        'type' => 'library',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'dev' => true,
+    ),
+    'versions' => array(
+        '__root__' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '238ef2ddeb0bcf2233c467fd4bef54be7d2cf67c',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'razorpay/razorpay' => array(
+            'pretty_version' => '2.9.2',
+            'version' => '2.9.2.0',
+            'reference' => 'c5cf59941eb2d888e80371328d932e6e8266d352',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../razorpay/razorpay',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'rmccue/requests' => array(
+            'pretty_version' => 'v2.0.15',
+            'version' => '2.0.15.0',
+            'reference' => '877cd66169755899682f1595e057334b40d9d149',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../rmccue/requests',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+    ),
+);

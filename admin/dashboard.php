@@ -42,38 +42,41 @@ if (!isset($_SESSION["un"])) {
             color: #0f172a;
             margin-bottom: 30px;
             animation: fadeInDown 1s ease-in-out;
+            text-align: center;
         }
 
-        /* Menu Container */
+        /* Enhanced Menu Container */
         .menu {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            padding: 20px;
             animation: fadeIn 1.2s ease forwards;
         }
 
-        /* Menu Items */
+        /* Enhanced Menu Items */
         .menu a {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 25px 20px;
-            border-radius: 20px;
-            font-size: 1.1rem;
-            font-weight: 500;
+            padding: 35px 25px;
+            border-radius: 24px;
+            font-size: 1.2rem;
+            font-weight: 600;
             color: #fff;
             text-decoration: none;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            transition: transform 0.5s ease, box-shadow 0.5s ease, background 0.5s ease;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            cursor: pointer;
         }
 
         .menu a:hover {
-            transform: translateY(-8px) scale(1.05);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+            transform: translateY(-15px) scale(1.03) rotateX(5deg);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
         }
 
         .menu a::before {
@@ -85,22 +88,40 @@ if (!isset($_SESSION["un"])) {
             height: 100%;
             background: rgba(255, 255, 255, 0.15);
             transform: skewX(-25deg);
-            transition: left 0.6s ease;
+            transition: left 0.8s ease;
         }
 
         .menu a:hover::before {
             left: 120%;
         }
 
-        /* Icons inside menu */
+        .menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.8);
+            transform: translateX(-50%);
+            transition: width 0.6s ease;
+        }
+
+        .menu a:hover::after {
+            width: 80%;
+        }
+
+        /* Enhanced Icons */
         .menu a .icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            transition: transform 0.5s ease, color 0.5s ease;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            z-index: 2;
         }
 
         .menu a:hover .icon {
-            transform: rotate(20deg) scale(1.3);
+            transform: scale(1.3) rotateY(360deg);
             color: #fff;
         }
 
@@ -125,26 +146,50 @@ if (!isset($_SESSION["un"])) {
             background: linear-gradient(135deg, #ff9966, #ff5e62);
         }
 
-        /* Card Animation */
+        /* Enhanced Card Animation */
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(40px) scale(0.9);
+                filter: blur(5px);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
+                filter: blur(0);
             }
         }
 
         @keyframes fadeInDown {
             from {
                 opacity: 0;
-                transform: translateY(-20px);
+                transform: translateY(-40px);
+                filter: blur(3px);
             }
             to {
                 opacity: 1;
                 transform: translateY(0);
+                filter: blur(0);
+            }
+        }
+
+        /* Staggered animations */
+
+        .menu a:nth-child(1) { animation-delay: 0.1s; }
+        .menu a:nth-child(2) { animation-delay: 0.2s; }
+        .menu a:nth-child(3) { animation-delay: 0.3s; }
+        .menu a:nth-child(4) { animation-delay: 0.4s; }
+        .menu a:nth-child(5) { animation-delay: 0.5s; }
+        .menu a:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes cardEnter {
+            from {
+                opacity: 0;
+                transform: translateY(30px) rotateX(-10deg) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) rotateX(0deg) scale(1);
             }
         }
 
@@ -154,6 +199,17 @@ if (!isset($_SESSION["un"])) {
             margin-bottom: 250px;
             margin-top: 20px;
             padding: 0 15px;
+        }
+
+        /* Enhanced container */
+        .container-fluid {
+            padding: 40px 20px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            margin: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         /* Hover Shadow Animation for Body */
@@ -166,6 +222,50 @@ if (!isset($_SESSION["un"])) {
         footer {
             font-size: 0.9rem;
             color: #6c757d;
+        }
+
+        /* Click animation */
+        .menu a:active {
+            transform: translateY(-12px) scale(1.01);
+            transition: transform 0.1s ease;
+        }
+
+        /* Pulse animation on load */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .menu a:hover {
+            animation: none;
+        }
+
+        /* Mobile responsive improvements */
+        @media (max-width: 768px) {
+            .menu {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 10px;
+            }
+            
+            .menu a {
+                padding: 30px 20px;
+            }
+            
+            .container-fluid {
+                margin: 10px;
+                padding: 30px 15px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .main-content {
+                margin-left: 0;
+            }
         }
     </style>
 </head>
@@ -209,18 +309,12 @@ if (!isset($_SESSION["un"])) {
                             <span class="icon">📄</span>
                             All Users
                         </a>
-                        <a href="pay.php" class="booking">
-                            <span class="icon">💳</span>
-                            Payment Status
-                        </a>
+                       
                         <a href="rent_car_report.php" class="reports">
                             <span class="icon">📊</span>
                             Reports
                         </a>
-                        <a href="setting.php" class="settings">
-                            <span class="icon">⚙️</span>
-                            Settings
-                        </a>
+                        
                     </div>
 
                 </div>

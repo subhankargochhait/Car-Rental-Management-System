@@ -48,19 +48,33 @@ $result = $con->query("SELECT * FROM bookings WHERE username='$username' ORDER B
                                 <p class="text-gray-600 text-sm mb-2"><strong>Return Date:</strong> <?php echo htmlspecialchars($row['return_date']); ?></p>
                                 <p class="text-gray-700 font-medium text-base mb-2"><strong>Total Amount:</strong> ₹<?php echo htmlspecialchars($row['total_amount']); ?></p>
                                 <p class="text-gray-600 text-sm mb-2"><strong>Payment Method:</strong> <?php echo htmlspecialchars($row['payment_method']); ?></p>
+                                
+                                <!-- ✅ Only Show Payment Status -->
+                                <p class="text-sm mt-1">
+                                    <strong>Payment Status:</strong>
+                                    <span class="px-2 py-1 rounded-full text-xs font-semibold
+                                        <?php echo strtolower($row['status']) === 'pending'
+                                            ? 'bg-yellow-100 text-yellow-700'
+                                            : (strtolower($row['status']) === 'success'
+                                                ? 'bg-green-100 text-green-700'
+                                                : 'bg-gray-100 text-gray-700'); ?>">
+                                        <?php echo htmlspecialchars($row['status']); ?>
+                                    </span>
+                                </p>
+
+                                <!-- 🔹 Razorpay Transaction Details -->
+                                <?php if (!empty($row['razorpay_payment_id'])): ?>
+                                    <p class="text-xs text-gray-500 mt-2"><strong>Payment ID:</strong> <?php echo htmlspecialchars($row['razorpay_payment_id']); ?></p>
+                                <?php endif; ?>
+                                <?php if (!empty($row['razorpay_order_id'])): ?>
+                                    <p class="text-xs text-gray-500"><strong>Order ID:</strong> <?php echo htmlspecialchars($row['razorpay_order_id']); ?></p>
+                                <?php endif; ?>
+                                <?php if (!empty($row['razorpay_signature'])): ?>
+                                    <p class="text-xs text-gray-500"><strong>Signature:</strong> <?php echo htmlspecialchars($row['razorpay_signature']); ?></p>
+                                <?php endif; ?>
                             </div>
 
                             <div class="mt-4 flex items-center justify-between">
-                                <!-- Status -->
-                                <span class="px-3 py-1 rounded-full text-xs font-semibold shadow-sm
-                                    <?php echo strtolower($row['status']) === 'pending' 
-                                        ? 'bg-yellow-100 text-yellow-700' 
-                                        : (strtolower($row['status']) === 'paid' 
-                                            ? 'bg-green-100 text-green-700' 
-                                            : 'bg-gray-100 text-gray-700'); ?>">
-                                    <?php echo htmlspecialchars($row['status']); ?>
-                                </span>
-
                                 <!-- Delete Button -->
                                 <a href="delete_booking.php?id=<?php echo $row['id']; ?>" 
                                    class="inline-block bg-gradient-to-r from-red-500 to-red-600 text-white text-sm px-4 py-2 rounded-lg font-medium shadow-md hover:from-red-600 hover:to-red-700 transform hover:scale-105 transition">
