@@ -6,8 +6,6 @@ if (!isset($_SESSION["un"])) {
 }
 
 include("../config/db.php");
-
-// include Razorpay SDK
 require("../vendor/autoload.php");
 use Razorpay\Api\Api;
 
@@ -20,15 +18,17 @@ $total_amount   = isset($_POST['total_amount']) ? (float)$_POST['total_amount'] 
 $payment_method = $_POST['payment_method'] ?? 'Cash on Delivery';
 $status         = $_POST['payment_status'] ?? 'Pending';
 $razorpay_id    = $_POST['razorpay_payment_id'] ?? null;
+$order_id       = $_POST['razorpay_order_id'] ?? null;
+$signature      = $_POST['razorpay_signature'] ?? null;
 
-// validate dates
+// Validate dates
 if (!empty($pickup_date) && !empty($return_date)) {
     if (strtotime($return_date) < strtotime($pickup_date)) {
         die("❌ Error: Return date cannot be earlier than pickup date.");
     }
 }
 
-// fetch car image & type
+// Fetch car image & type
 $image = '';
 $car_type = '';
 $carQuery = $con->prepare("SELECT image, car_type FROM cars WHERE car_name=? LIMIT 1");
@@ -41,43 +41,36 @@ if ($carRow = $carResult->fetch_assoc()) {
 }
 $carQuery->close();
 
-// insert booking
+// Verify Razorpay signature if payment is online
+if ($payment_method === "Razorpay" && $razorpay_id && $order_id && $signature) {
+    $api = new Api("rzp_test_R6gWimTKYuOdob", "Y8JxgzTXxVlqs9dLvfdvGvNd");
+    try {
+        $api->utility->verifyPaymentSignature([
+            'razorpay_order_id' => $order_id,
+            'razorpay_payment_id' => $razorpay_id,
+            'razorpay_signature' => $signature
+        ]);
+        $status = "Success"; // verified
+    } catch (Exception $e) {
+        die("❌ Payment verification failed: " . $e->getMessage());
+    }
+}
+
+// Insert booking
 $stmt = $con->prepare("INSERT INTO bookings 
     (username, car_name, car_type, daily_rate, pickup_date, return_date, total_amount, payment_method, status, image, razorpay_payment_id, booking_date) 
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())");
 
 $stmt->bind_param(
     "sssdssdssss",
-    $username,
-    $car_name,
-    $car_type,
-    $daily_rate,
-    $pickup_date,
-    $return_date,
-    $total_amount,
-    $payment_method,
-    $status,
-    $image,
-    $razorpay_id
+    $username, $car_name, $car_type, $daily_rate,
+    $pickup_date, $return_date, $total_amount,
+    $payment_method, $status, $image, $razorpay_id
 );
 
 if ($stmt->execute()) {
-
-    // ✅ Capture Razorpay payment if method is Razorpay
-    if ($payment_method === "Razorpay" && !empty($razorpay_id)) {
-        $api = new Api("rzp_test_R6gWimTKYuOdob", "Y8JxgzTXxVlqs9dLvfdvGvNd");
-
-        try {
-            $payment = $api->payment->fetch($razorpay_id);
-            $payment->capture(['amount' => $payment['amount']]); // amount in paise
-        } catch (Exception $e) {
-            error_log("Razorpay capture failed: " . $e->getMessage());
-        }
-    }
-
     header("Location: my_rental.php");
     exit;
-
 } else {
     echo "❌ Error: " . $stmt->error;
 }

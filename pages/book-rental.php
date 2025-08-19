@@ -6,7 +6,7 @@ if (!isset($_SESSION["un"])) {
 }
 include("../config/db.php");
 
-// Get car details from URL
+// Get car details
 $car_name   = $_GET['car_name'] ?? '';
 $car_type   = $_GET['car_type'] ?? '';
 $daily_rate = $_GET['daily_rate'] ?? '';
@@ -19,70 +19,87 @@ mysqli_close($con);
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Book Rental</title>
+  <title>Book Your Car</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;500;700&display=swap" rel="stylesheet">
   <style> body { font-family: "Lexend", sans-serif; } </style>
-  <!-- Razorpay -->
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
-<body class="bg-gradient-to-r from-slate-100 to-indigo-100 min-h-screen flex flex-col">
+<body class="bg-gradient-to-br from-indigo-50 to-slate-100 min-h-screen flex flex-col">
+
   <?php include('../includes/navbar-user.php') ?>
 
   <div class="flex-1 flex items-center justify-center py-12">
-    <div class="w-full max-w-lg bg-white rounded-2xl shadow-lg p-8">
-      
-      <h2 class="text-2xl font-bold text-slate-800 text-center mb-6">Book Your Car</h2>
+    <div class="w-full max-w-6xl bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl p-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
 
-      <img src="../admin/car_images/<?php echo htmlspecialchars($image); ?>" 
-           alt="Car Image" 
-           class="w-3/4 h-52 object-cover rounded-xl mx-auto mb-6 shadow">
-
-      <div class="bg-slate-50 rounded-xl p-5 mb-6 border border-slate-200">
-        <p><b>Car Name:</b> <?php echo htmlspecialchars($car_name); ?></p>
-        <p><b>Car Type:</b> <?php echo htmlspecialchars($car_type); ?></p>
-        <p><b>Daily Rate:</b> ₹<span id="dailyRate"><?php echo htmlspecialchars($daily_rate); ?></span></p>
-        <p><b>Status:</b> 
-          <span class="px-3 py-1 text-sm font-medium rounded-full 
-            <?php echo strtolower($status) === 'available' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'; ?>">
-            <?php echo htmlspecialchars($status); ?>
-          </span>
-        </p>
+      <!-- Car Preview -->
+      <div class="flex flex-col items-center justify-center space-y-6">
+        <img src="../admin/car_images/<?php echo htmlspecialchars($image); ?>" 
+             alt="Car Image" 
+             class="w-full max-h-80 object-cover rounded-2xl shadow-md">
+        
+        <div class="w-full bg-gradient-to-r from-indigo-600 to-indigo-500 text-white p-6 rounded-2xl shadow-md">
+          <h2 class="text-2xl font-bold mb-2"><?php echo htmlspecialchars($car_name); ?></h2>
+          <p class="text-sm opacity-90 mb-1">Type: <?php echo htmlspecialchars($car_type); ?></p>
+          <p class="text-lg font-semibold">₹<?php echo htmlspecialchars($daily_rate); ?> / day</p>
+          <p class="mt-2">
+            <span class="px-3 py-1 text-sm font-medium rounded-full 
+              <?php echo strtolower($status) === 'available' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'; ?>">
+              <?php echo htmlspecialchars($status); ?>
+            </span>
+          </p>
+        </div>
       </div>
 
       <!-- Booking Form -->
-      <form id="bookingForm" action="book_ins.php" method="post" class="space-y-5">
-        <input type="hidden" name="car_name" value="<?php echo htmlspecialchars($car_name); ?>">
-        <input type="hidden" name="daily_rate" value="<?php echo htmlspecialchars($daily_rate); ?>">
-        <input type="hidden" id="totalAmountInput" name="total_amount" value="0">
-        <input type="hidden" id="totalDaysInput" name="total_days" value="0">
-        <input type="hidden" id="paymentStatus" name="payment_status" value="">
+      <div>
+        <h2 class="text-2xl font-bold text-slate-800 mb-6">Booking Details</h2>
+        
+        <form id="bookingForm" action="book_ins.php" method="post" class="space-y-6">
+          <input type="hidden" name="car_name" value="<?php echo htmlspecialchars($car_name); ?>">
+          <input type="hidden" name="daily_rate" value="<?php echo htmlspecialchars($daily_rate); ?>">
+          <input type="hidden" id="totalAmountInput" name="total_amount" value="0">
+          <input type="hidden" id="totalDaysInput" name="total_days" value="0">
+          <input type="hidden" id="paymentStatus" name="payment_status" value="">
 
-        <div>
-          <label>Pickup Date:</label>
-          <input type="date" id="pickupDate" name="pickup_date" required class="w-full border rounded-lg px-3 py-2">
-        </div>
+          <!-- Pickup -->
+          <div>
+            <label class="block text-sm font-medium text-slate-600">Pickup Date</label>
+            <input type="date" id="pickupDate" name="pickup_date" required 
+                   class="mt-1 w-full border border-slate-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+          </div>
 
-        <div>
-          <label>Return Date:</label>
-          <input type="date" id="returnDate" name="return_date" required class="w-full border rounded-lg px-3 py-2">
-        </div>
+          <!-- Return -->
+          <div>
+            <label class="block text-sm font-medium text-slate-600">Return Date</label>
+            <input type="date" id="returnDate" name="return_date" required 
+                   class="mt-1 w-full border border-slate-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+          </div>
 
-        <!-- Payment Method -->
-        <div>
-          <label>Payment Method:</label>
-          <select id="paymentMethod" name="payment_method" required class="w-full border rounded-lg px-3 py-2">
-            <option value="">-- Select --</option>
-            <option value="Cash on Delivery">Cash on Delivery</option>
-            <option value="Razorpay">Razorpay</option>
-          </select>
-        </div>
+          <!-- Payment -->
+          <div>
+            <label class="block text-sm font-medium text-slate-600">Payment Method</label>
+            <select id="paymentMethod" name="payment_method" required 
+                    class="mt-1 w-full border border-slate-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+              <option value="">-- Select --</option>
+              <option value="Cash on Delivery">Cash on Delivery</option>
+              <option value="Razorpay">Razorpay</option>
+            </select>
+          </div>
 
-        <div class="bg-blue-50 text-blue-700 font-bold text-center py-2 rounded-lg">Total Days: <span id="totalDays">0</span></div>
-        <div class="bg-indigo-50 text-indigo-700 font-bold text-center py-2 rounded-lg">Total Amount: ₹<span id="totalAmount">0</span></div>
+          <!-- Summary -->
+          <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-2">
+            <p class="text-slate-700">Total Days: <span id="totalDays" class="font-bold">0</span></p>
+            <p class="text-slate-700">Total Amount: <span id="totalAmount" class="font-bold text-indigo-600">₹0</span></p>
+          </div>
 
-        <button type="submit" id="bookNowBtn" disabled class="w-full bg-indigo-600 text-white py-3 rounded-lg">Book Now</button>
-      </form>
+          <!-- Button -->
+          <button type="submit" id="bookNowBtn" disabled 
+                  class="w-full bg-gradient-to-r from-indigo-600 to-indigo-500 text-white py-4 rounded-2xl shadow-lg hover:opacity-90 transition">
+            Confirm & Book
+          </button>
+        </form>
+      </div>
     </div>
   </div>
 
@@ -93,13 +110,13 @@ mysqli_close($con);
   function calculateTotal() {
       let pickupValue = document.getElementById('pickupDate').value;
       let returnValue = document.getElementById('returnDate').value;
-      let dailyRate = parseFloat(document.getElementById('dailyRate').textContent);
+      let dailyRate = parseFloat(<?php echo json_encode($daily_rate); ?>);
       let bookBtn = document.getElementById('bookNowBtn');
 
       if (!pickupValue || !returnValue) {
           document.getElementById('totalDays').textContent = '0';
           document.getElementById('totalDaysInput').value = '0';
-          document.getElementById('totalAmount').textContent = '0';
+          document.getElementById('totalAmount').textContent = '₹0';
           document.getElementById('totalAmountInput').value = '0';
           bookBtn.disabled = true;
           return;
@@ -114,13 +131,13 @@ mysqli_close($con);
 
           document.getElementById('totalDays').textContent = days;
           document.getElementById('totalDaysInput').value = days;
-          document.getElementById('totalAmount').textContent = total;
+          document.getElementById('totalAmount').textContent = "₹" + total;
           document.getElementById('totalAmountInput').value = total;
           bookBtn.disabled = false;
       } else {
           document.getElementById('totalDays').textContent = '0';
           document.getElementById('totalDaysInput').value = '0';
-          document.getElementById('totalAmount').textContent = '0';
+          document.getElementById('totalAmount').textContent = '₹0';
           document.getElementById('totalAmountInput').value = '0';
           bookBtn.disabled = true;
       }
@@ -129,49 +146,64 @@ mysqli_close($con);
       input.addEventListener('change', calculateTotal);
   });
 
-  // submit with payment status
+  // payment integration
   document.getElementById("bookingForm").addEventListener("submit", function (e) {
       let paymentMethod = document.getElementById("paymentMethod").value;
       let paymentStatusInput = document.getElementById("paymentStatus");
       let amount = parseFloat(document.getElementById("totalAmountInput").value);
 
       if (paymentMethod === "Cash on Delivery") {
-          paymentStatusInput.value = "Pending"; // COD → Pending
+          paymentStatusInput.value = "Pending"; 
       }
 
       if (paymentMethod === "Razorpay") {
-          e.preventDefault(); // prevent normal submit
+          e.preventDefault();
           if (!amount || amount <= 0) {
               alert("Please select valid pickup and return dates first.");
               return;
           }
 
-          var options = {
-              "key": "rzp_test_R6gWimTKYuOdob",
-              "amount": Math.round(amount * 100),
-              "currency": "INR",
-              "name": "Car Rental Booking",
-              "description": "Payment for <?php echo htmlspecialchars($car_name); ?> rental",
-              "handler": function (response) {
-                  paymentStatusInput.value = "Success"; // Razorpay → Success
-                  let form = document.getElementById("bookingForm");
+          fetch("create_order.php", {
+              method: "POST",
+              headers: { "Content-Type": "application/x-www-form-urlencoded" },
+              body: "amount=" + amount
+          })
+          .then(res => res.json())
+          .then(order => {
+              if (order.id) {
+                  var options = {
+                      "key": "rzp_test_R6gWimTKYuOdob",
+                      "amount": order.amount,
+                      "currency": order.currency,
+                      "name": "Car Rental Booking",
+                      "description": "Payment for <?php echo htmlspecialchars($car_name); ?> rental",
+                      "order_id": order.id,
+                      "handler": function (response) {
+                          paymentStatusInput.value = "Success";
 
-                  let paymentIdInput = document.createElement("input");
-                  paymentIdInput.type = "hidden";
-                  paymentIdInput.name = "razorpay_payment_id";
-                  paymentIdInput.value = response.razorpay_payment_id;
-                  form.appendChild(paymentIdInput);
+                          let form = document.getElementById("bookingForm");
+                          ["razorpay_payment_id", "razorpay_order_id", "razorpay_signature"].forEach(function (field) {
+                              let input = document.createElement("input");
+                              input.type = "hidden";
+                              input.name = field;
+                              input.value = response[field];
+                              form.appendChild(input);
+                          });
 
-                  form.submit();
-              },
-              "theme": { "color": "#4f46e5" }
-          };
-
-          var rzp = new Razorpay(options);
-          rzp.on('payment.failed', function (response) {
-              alert("Payment failed: " + response.error.description);
+                          form.submit();
+                      },
+                      // Indigo theme color
+                      "theme": { "color": "#4f46e5" }
+                  };
+                  var rzp = new Razorpay(options);
+                  rzp.on('payment.failed', function (response) {
+                      alert("Payment failed: " + response.error.description);
+                  });
+                  rzp.open();
+              } else {
+                  alert("Failed to create order.");
+              }
           });
-          rzp.open();
       }
   });
 
