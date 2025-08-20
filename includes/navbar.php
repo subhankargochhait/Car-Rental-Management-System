@@ -1,3 +1,7 @@
+<?php
+// Auto-detect site URL (works for localhost and live server)
+$site_url = "http://" . $_SERVER['HTTP_HOST'] . "/Car-Rental-Management-System";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,24 +21,24 @@
     <div class="container mx-auto px-6 py-4 flex items-center justify-between">
       
       <!-- Logo -->
-      <a href="../index.php" class="flex items-center space-x-2">
-        <img src="../Frame.png" alt="Logo" class="h-10 w-auto">
+      <a href="<?php echo $site_url; ?>/index.php" class="flex items-center space-x-2">
+        <img src="<?php echo $site_url; ?>/Frame.png" alt="Logo" class="h-10 w-auto">
         <h3 class="text-xl font-bold text-blue-600">RENTCARS</h3>
       </a>
 
       <!-- Desktop Menu -->
       <ul class="hidden md:flex space-x-8 font-medium text-gray-700">
-        <li><a href="../index.php" class="hover:text-blue-600 transition">Home</a></li>
-        <li><a href="/Travarsa_Internship/Car-Rental-Management-System/pages/about.php" class="hover:text-blue-600 transition">About Us</a></li>
-        <li><a href="/Travarsa_Internship/Car-Rental-Management-System/pages/services.php" class="hover:text-blue-600 transition">Services</a></li>
-        <li><a href="/Travarsa_Internship/Car-Rental-Management-System/pages/contact_us.php" class="hover:text-blue-600 transition">Contact Us</a></li>
+        <li><a href="<?php echo $site_url; ?>/index.php" class="hover:text-blue-600 transition">Home</a></li>
+        <li><a href="<?php echo $site_url; ?>/pages/about.php" class="hover:text-blue-600 transition">About Us</a></li>
+        <li><a href="<?php echo $site_url; ?>/pages/services.php" class="hover:text-blue-600 transition">Services</a></li>
+        <li><a href="<?php echo $site_url; ?>/pages/contact_us.php" class="hover:text-blue-600 transition">Contact Us</a></li>
       </ul>
 
       <!-- Buttons -->
       <div class="hidden md:flex space-x-4">
-        <a href="/Travarsa_Internship/Car-Rental-Management-System/pages/login.php" class="px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-100 transition">Login</a>
-        <a href="/Travarsa_Internship/Car-Rental-Management-System/pages/signup.php" class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition">Sign Up</a>
-        <a href="../admin/login.php" class="px-4 py-2 rounded-lg bg-gray-800 text-white hover:bg-gray-900 transition">Admin Login</a>
+        <a href="<?php echo $site_url; ?>/pages/login.php" class="px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-100 transition">Login</a>
+        <a href="<?php echo $site_url; ?>/pages/signup.php" class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition">Sign Up</a>
+        <a href="<?php echo $site_url; ?>/admin/login.php" class="px-4 py-2 rounded-lg bg-gray-800 text-white hover:bg-gray-900 transition">Admin Login</a>
       </div>
 
       <!-- Mobile Menu Button -->
@@ -49,13 +53,13 @@
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
       <ul class="flex flex-col space-y-3 px-6 py-4 text-gray-700 font-medium">
-        <li><a href="../index.php" class="block hover:text-blue-600">Home</a></li>
-        <li><a href="/Travarsa_Internship/Car-Rental-Management-System/pages/about.php" class="block hover:text-blue-600">About Us</a></li>
-        <li><a href="/Travarsa_Internship/Car-Rental-Management-System/pages/services.php" class="block hover:text-blue-600">Services</a></li>
-        <li><a href="/Travarsa_Internship/Car-Rental-Management-System/pages/contact_us.php" class="block hover:text-blue-600">Contact Us</a></li>
-        <li><a href="/Travarsa_Internship/Car-Rental-Management-System/pages/login.php" class="block hover:text-blue-600">Login</a></li>
-        <li><a href="/Travarsa_Internship/Car-Rental-Management-System/pages/signup.php" class="block hover:text-blue-600">Sign Up</a></li>
-        <li><a href="../admin/login.php" class="block hover:text-blue-600">Admin Login</a></li>
+        <li><a href="<?php echo $site_url; ?>/index.php" class="block hover:text-blue-600">Home</a></li>
+        <li><a href="<?php echo $site_url; ?>/pages/about.php" class="block hover:text-blue-600">About Us</a></li>
+        <li><a href="<?php echo $site_url; ?>/pages/services.php" class="block hover:text-blue-600">Services</a></li>
+        <li><a href="<?php echo $site_url; ?>/pages/contact_us.php" class="block hover:text-blue-600">Contact Us</a></li>
+        <li><a href="<?php echo $site_url; ?>/pages/login.php" class="block hover:text-blue-600">Login</a></li>
+        <li><a href="<?php echo $site_url; ?>/pages/signup.php" class="block hover:text-blue-600">Sign Up</a></li>
+        <li><a href="<?php echo $site_url; ?>/admin/login.php" class="block hover:text-blue-600">Admin Login</a></li>
       </ul>
     </div>
   </nav>

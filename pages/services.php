@@ -1,5 +1,7 @@
 <?php
-include("../config/db.php");
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +15,10 @@ include("../config/db.php");
 <body class="bg-gray-50 font-sans">
 
   <!-- Navbar -->
-  <?php include('../includes/navbar.php') ?>
+  <?php 
+  include('../includes/navbar.php');
+  include("../config/db.php");
+  ?>
 
   <div class="max-w-7xl mx-auto px-4 py-10">
     <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">🚗 Available Cars</h2>
